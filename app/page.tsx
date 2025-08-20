@@ -17,6 +17,7 @@ export default function AlgebraAILanding() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const [showThankYou, setShowThankYou] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -47,6 +48,13 @@ export default function AlgebraAILanding() {
       })
     }
     setIsOpen(false)
+  }
+
+  const handleTryNow = () => {
+    setShowThankYou(true)
+    setTimeout(() => {
+      setShowThankYou(false)
+    }, 5000) // Hide after 5 seconds
   }
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -80,7 +88,7 @@ export default function AlgebraAILanding() {
   ]
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-purple-50 via-blue-50 to-green-50">
+    <div className="min-h-screen bg-gradient-to-br from-[#7deaff]/10 via-white to-[#7deaff]/5">
       {/* Sticky Header */}
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
@@ -90,7 +98,7 @@ export default function AlgebraAILanding() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/intelladapt-logo.png" alt="intellADAPT Logo" className="h-12 w-auto" />
+              <img src="/IA Logo.png" alt="IA Logo" className="h-12 w-auto" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-gray-800">AlgebraAI</span>
                 <span className="text-sm text-gray-600 font-medium">Help Your Child Master Algebra</span>
@@ -98,20 +106,26 @@ export default function AlgebraAILanding() {
             </div>
 
             {/* Desktop Navigation */}
-            <div className="hidden md:flex items-center space-x-6">
+            <div className="hidden md:flex items-center space-x-4">
               {navItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
-                  className="text-gray-600 hover:text-purple-600 transition-colors cursor-pointer"
+                  className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors cursor-pointer whitespace-nowrap min-w-fit"
                 >
                   {item.label}
                 </button>
               ))}
-              <Button variant="outline">Sign In</Button>
+              <Button 
+                variant="outline"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
+                onClick={() => window.open('https://pw.intelladapt.com/', '_blank')}
+              >
+                Sign In
+              </Button>
               <Button
                 onClick={scrollToCTA}
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
               >
                 Get Started
               </Button>
@@ -139,19 +153,23 @@ export default function AlgebraAILanding() {
                       <button
                         key={item.id}
                         onClick={() => scrollToSection(item.id)}
-                        className="text-left text-lg text-gray-600 hover:text-purple-600 transition-colors py-2 border-b border-gray-100"
+                        className="text-left text-lg border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 mx-2 transition-colors whitespace-nowrap min-w-fit"
                       >
                         {item.label}
                       </button>
                     ))}
 
                     <div className="flex flex-col space-y-3 mt-8">
-                      <Button variant="outline" className="w-full bg-transparent">
+                      <Button 
+                        variant="outline" 
+                        className="w-full border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
+                        onClick={() => window.open('https://pw.intelladapt.com/', '_blank')}
+                      >
                         Sign In
                       </Button>
                       <Button
                         onClick={scrollToCTA}
-                        className="w-full bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700"
+                        className="w-full border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
                       >
                         Get Started
                       </Button>
@@ -169,10 +187,7 @@ export default function AlgebraAILanding() {
         {/* Hero Section */}
         <section className="container mx-auto px-4 py-16 text-center">
           <div className="max-w-4xl mx-auto">
-            <Badge className="mb-6 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 border-purple-200">
-              K12 Education • USA Standards Aligned
-            </Badge>
-            <h1 className="text-5xl md:text-6xl font-bold mb-6 bg-gradient-to-r from-cyan-500 via-blue-600 to-teal-500 bg-clip-text text-transparent">
+            <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
               Master Algebra with
               <br />
               AI-Powered Learning
@@ -186,12 +201,12 @@ export default function AlgebraAILanding() {
               <Button
                 onClick={scrollToCTA}
                 size="lg"
-                className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-lg px-8 py-3"
+                className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors"
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 Start Learning Free
               </Button>
-              <Button size="lg" variant="outline" className="text-lg px-8 py-3 bg-transparent">
+              <Button size="lg" className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors">
                 <BookOpen className="w-5 h-5 mr-2" />
                 Watch Demo
               </Button>
@@ -211,7 +226,7 @@ export default function AlgebraAILanding() {
           </div>
 
           {/* Research Foundation */}
-          <div className="bg-gradient-to-r from-blue-50 to-purple-50 rounded-2xl p-8 mb-12">
+          <div className="bg-gradient-to-r from-[#7deaff]/10 to-white rounded-2xl p-8 mb-12">
             <div className="text-center mb-8">
               <h3 className="text-2xl font-bold text-gray-800 mb-4">Advanced Neuroscience Meets Education</h3>
               <div className="text-lg text-gray-600 max-w-3xl mx-auto">
@@ -316,7 +331,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* Learning Strategy Section */}
-        <section id="learning-strategy" className="bg-gradient-to-r from-green-50 to-blue-50 py-16">
+        <section id="learning-strategy" className="bg-gradient-to-r from-[#7deaff]/10 to-white py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">Personalized Learning Strategy</h2>
@@ -423,7 +438,7 @@ export default function AlgebraAILanding() {
                   </div>
                   <Button
                     onClick={scrollToCTA}
-                    className="bg-gradient-to-r from-green-600 to-blue-600 hover:from-green-700 hover:to-blue-700 text-white px-8 py-3"
+                    className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white px-8 py-3 transition-colors"
                   >
                     Try Now
                   </Button>
@@ -434,7 +449,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* Value Proposition Section - What Everyone Gets */}
-        <section id="why-algebraai" className="bg-gradient-to-r from-indigo-50 to-purple-50 py-16">
+        <section id="why-algebraai" className="bg-gradient-to-r from-[#7deaff]/10 to-white py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-16">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">Why Choose AlgebraAI?</h2>
@@ -705,6 +720,22 @@ export default function AlgebraAILanding() {
               </div>
             </div>
 
+            {/* Thank You Message */}
+            {showThankYou && (
+              <div className="max-w-2xl mx-auto mb-8">
+                <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
+                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <span className="text-3xl">✅</span>
+                  </div>
+                  <h3 className="text-xl font-bold text-green-800 mb-3">Thank you for subscribing!</h3>
+                  <div className="text-green-700 space-y-2">
+                    <p>You will receive an email regarding the access and code.</p>
+                    <p className="font-medium">Don't forget to check your spam/junk folder.</p>
+                  </div>
+                </div>
+              </div>
+            )}
+
             <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
               {/* Free Plan */}
               <Card className="border-2 border-gray-200 hover:shadow-xl transition-shadow">
@@ -743,8 +774,8 @@ export default function AlgebraAILanding() {
                     </li>
                   </ul>
                   <Button
-                    onClick={scrollToCTA}
-                    className="w-full bg-gradient-to-r from-gray-500 to-gray-600 hover:from-gray-600 hover:to-gray-700"
+                    onClick={handleTryNow}
+                    className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Try Now
                   </Button>
@@ -792,8 +823,8 @@ export default function AlgebraAILanding() {
                     </li>
                   </ul>
                   <Button
-                    onClick={scrollToCTA}
-                    className="w-full bg-gradient-to-r from-blue-500 to-cyan-500 hover:from-blue-600 hover:to-cyan-600"
+                    onClick={handleTryNow}
+                    className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Try Now
                   </Button>
@@ -847,9 +878,20 @@ export default function AlgebraAILanding() {
                       <span>Priority support & setup assistance</span>
                     </li>
                   </ul>
+                  
+                  {/* EEG Headband Note */}
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-6">
+                    <div className="flex items-start space-x-2">
+                      <span className="text-amber-600 text-sm">⚠️</span>
+                      <div className="text-sm text-amber-800">
+                        <strong>Note:</strong> EEG headband is not included and needs to be purchased separately.
+                      </div>
+                    </div>
+                  </div>
+                  
                   <Button
-                    onClick={scrollToCTA}
-                    className="w-full bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700"
+                    onClick={handleTryNow}
+                    className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Try Now
                   </Button>
@@ -892,7 +934,7 @@ export default function AlgebraAILanding() {
                   </ul>
                   <Button
                     onClick={() => scrollToSection("contact")}
-                    className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700"
+                    className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Contact Us for a Quote
                   </Button>
@@ -903,7 +945,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* Features Section - Complete Algebra Curriculum */}
-        <section id="features" className="bg-gray-50 py-16">
+        <section id="features" className="bg-[#7deaff]/5 py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">
@@ -918,9 +960,9 @@ export default function AlgebraAILanding() {
             {/* 13 Adaptive Modules Section */}
             <div className="mb-16">
               <div className="text-center mb-8">
-                <Badge className="mb-4 bg-gradient-to-r from-purple-100 to-blue-100 text-purple-700 border-purple-200 text-lg px-4 py-2">
+                <div className="mb-4 bg-white text-black border-2 border-[#7deaff] text-lg px-4 py-2 rounded-full inline-flex items-center">
                   13 Adaptive Modules • Foundations to Advanced
-                </Badge>
+                </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Progressive Learning Path</h3>
                 <div className="text-lg text-gray-600 max-w-2xl mx-auto">
                   Each module adapts to your child's learning strategy and brain patterns, ensuring mastery before
@@ -1069,7 +1111,7 @@ export default function AlgebraAILanding() {
               </div>
 
               <div className="text-center mt-8">
-                <div className="bg-gradient-to-r from-purple-50 to-blue-50 rounded-2xl p-6 max-w-4xl mx-auto">
+                <div className="bg-gradient-to-r from-[#7deaff]/10 to-white rounded-2xl p-6 max-w-4xl mx-auto">
                   <h4 className="text-xl font-bold text-gray-800 mb-3">
                     <Brain className="w-6 h-6 inline-block mr-2 text-purple-600" />
                     Every Module Adapts to Your Child's Brain
@@ -1081,7 +1123,7 @@ export default function AlgebraAILanding() {
                   </div>
                   <Button
                     onClick={scrollToCTA}
-                    className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-3"
+                    className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white px-8 py-3 transition-colors"
                   >
                     Try Now
                   </Button>
@@ -1109,7 +1151,7 @@ export default function AlgebraAILanding() {
                 <CardHeader>
                   <CardTitle className="text-xl text-blue-600 flex items-center">
                     <span className="text-2xl mr-3">🧠</span>
-                    What is <EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip>?
+                    What is&nbsp;<EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip>&nbsp;?
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1134,7 +1176,7 @@ export default function AlgebraAILanding() {
                 <CardHeader>
                   <CardTitle className="text-xl text-purple-600 flex items-center">
                     <span className="text-2xl mr-3">⚡</span>
-                    How does <EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip> work in learning?
+                    How does&nbsp;<EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip>&nbsp;work in learning?
                   </CardTitle>
                 </CardHeader>
                 <CardContent>
@@ -1199,7 +1241,7 @@ export default function AlgebraAILanding() {
                 <CardHeader>
                   <CardTitle className="text-xl text-orange-600 flex items-center">
                     <span className="text-2xl mr-3">🛡️</span>
-                    Is <EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip> technology safe for
+                    Is&nbsp;<EEGTooltip showLearnMore={false}>Electroencephalogram (EEG)</EEGTooltip>&nbsp;technology safe for
                     students?
                   </CardTitle>
                 </CardHeader>
@@ -1304,12 +1346,12 @@ export default function AlgebraAILanding() {
                 <Button
                   onClick={scrollToCTA}
                   size="lg"
-                  className="bg-gradient-to-r from-cyan-500 to-blue-600 hover:from-cyan-600 hover:to-blue-700 text-lg px-8 py-3"
+                  className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors"
                 >
                   <Rocket className="w-5 h-5 mr-2" />
                   Start Learning Free
                 </Button>
-                <Button size="lg" variant="outline" className="text-lg px-8 py-3 bg-transparent">
+                <Button size="lg" className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors">
                   <BookOpen className="w-5 h-5 mr-2" />
                   Watch Demo
                 </Button>
@@ -1319,7 +1361,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* CTA Section */}
-        <section id="cta-form" className="bg-gradient-to-r from-purple-600 via-blue-600 to-green-600 py-16">
+        <section id="cta-form" className="bg-gradient-to-r from-[#7deaff] via-[#1ba5ba] to-[#7deaff] py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -1426,7 +1468,7 @@ export default function AlgebraAILanding() {
                         type="submit"
                         size="lg"
                         disabled={isSubmitting}
-                        className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-lg px-12 py-4"
+                        className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-12 py-4 transition-colors"
                       >
                         <Rocket className="w-5 h-5 mr-2" />
                         {isSubmitting ? "Submitting..." : "Get Started Now"}
@@ -1467,7 +1509,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* Contact Section */}
-        <section id="contact" className="bg-gray-50 py-16">
+        <section id="contact" className="bg-[#7deaff]/5 py-16">
           <div className="container mx-auto px-4">
             <div className="max-w-4xl mx-auto">
               <div className="text-center mb-12">
@@ -1600,7 +1642,7 @@ export default function AlgebraAILanding() {
 
                     <Button
                       type="submit"
-                      className="w-full bg-gradient-to-r from-green-600 to-emerald-600 hover:from-green-700 hover:to-emerald-700 text-white text-lg px-8 py-4"
+                      className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-4 transition-colors"
                     >
                       Send Message
                     </Button>
@@ -1613,220 +1655,68 @@ export default function AlgebraAILanding() {
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-900 text-white py-16">
+      <footer className="bg-gray-900 text-white py-8">
         <div className="container mx-auto px-4">
-          <div className="grid lg:grid-cols-4 md:grid-cols-2 gap-8 mb-8">
-            {/* Left Side - intellADAPT Logo and Description */}
-            <div className="lg:col-span-1">
-              <div className="flex items-center space-x-3 mb-4">
-                <img src="/intelladapt-logo.png" alt="intellADAPT Logo" className="h-10 w-auto" />
-              </div>
-              <div className="text-gray-300 mb-4 text-sm leading-relaxed">
-                Advanced neuroscience-powered learning technology that adapts to every student's unique brain patterns
-                and learning strategies.
-              </div>
-              <div className="flex space-x-4">
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M24 4.557c-.883.392-1.832.656-2.828.775 1.017-.609 1.798-1.574 2.165-2.724-.951.564-2.005.974-3.127 1.195-.897-.957-2.178-1.555-3.594-1.555-3.179 0-5.515 2.966-4.797 6.045-4.091-.205-7.719-2.165-10.148-5.144-1.29 2.213-.669 5.108 1.523 6.574-.806-.026-1.566-.247-2.229-.616-.054 2.281 1.581 4.415 3.949 4.89-.693.188-1.452.232-2.224.084.626 1.956 2.444 3.379 4.6 3.419-2.07 1.623-4.678 2.348-7.29 2.04 2.179 1.397 4.768 2.212 7.548 2.212 9.142 0 14.307-7.721 13.995-14.646.962-.695 1.797-1.562 2.457-2.549z" />
-                  </svg>
+          <div className="flex flex-col items-center space-y-6">
+            {/* Top Row - Legal Links and Social Icons */}
+            <div className="flex flex-col lg:flex-row items-center justify-between w-full space-y-4 lg:space-y-0">
+              {/* Left Side - Legal Links */}
+              <div className="flex space-x-6 text-sm">
+                <a href="https://ia.intelladapt.ai/terms-of-use" className="text-gray-300 hover:text-white transition-colors">
+                  Terms of Use
                 </a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M22.46 6c-.77.35-1.6.58-2.46.69.88-.53 1.56-1.37 1.88-2.38-.83.5-1.75.85-2.72 1.05C18.37 4.5 17.26 4 16 4c-2.35 0-4.27 1.92-4.27 4.29 0 .34.04.67.11.98C8.28 9.09 5.11 7.38 3 4.79c-.37.63-.58 1.37-.58 2.15 0 1.49.75 2.81 1.91 3.56-.71 0-1.37-.2-1.95-.5v.03c0 2.08 1.48 3.82 3.44 4.21a4.22 4.22 0 0 1-1.93.07 4.28 4.28 0 0 0 4 2.98 8.521 8.521 0 0 1-5.33 1.84c-.34 0-.68-.02-1.02-.06C3.44 20.29 5.7 21 8.12 21 16 21 20.33 14.46 20.33 8.79c0-.19 0-.37-.01-.56.84-.6 1.56-1.36 2.14-2.23z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-                  </svg>
-                </a>
-                <a href="#" className="text-gray-400 hover:text-cyan-400 transition-colors">
-                  <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
-                    <path d="M12.017 0C5.396 0 .029 5.367.029 11.987c0 5.079 3.158 9.417 7.618 11.174-.105-.949-.199-2.403.041-3.439.219-.937 1.406-5.957 1.406-5.957s-.359-.72-.359-1.781c0-1.663.967-2.911 2.168-2.911 1.024 0 1.518.769 1.518 1.688 0 1.029-.653 2.567-.992 3.992-.285 1.193.6 2.165 1.775 2.165 2.128 0 3.768-2.245 3.768-5.487 0-2.861-2.063-4.869-5.008-4.869-3.41 0-5.409 2.562-5.409 5.199 0 1.033.394 2.143.889 2.741.099.12.112.225.085.345-.09.375-.293 1.199-.334 1.363-.053.225-.172.271-.402.165-1.495-.69-2.433-2.878-2.433-4.646 0-3.776 2.748-7.252 7.92-7.252 4.158 0 7.392 2.967 7.392 6.923 0 4.135-2.607 7.462-6.233 7.462-1.214 0-2.357-.629-2.75-1.378l-.748 2.853c-.271 1.043-1.002 2.35-1.492 3.146C9.57 23.812 10.763 24.009 12.017 24.009c6.624 0 11.99-5.367 11.99-11.988C24.007 5.367 18.641.001.012.001z" />
-                  </svg>
-                </a>
-              </div>
-            </div>
-
-            {/* Product Links */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-cyan-400">Product</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#features" className="text-gray-300 hover:text-white transition-colors">
-                    Features
-                  </a>
-                </li>
-                <li>
-                  <a href="#technology" className="text-gray-300 hover:text-white transition-colors">
-                    Technology
-                  </a>
-                </li>
-                <li>
-                  <a href="#learning-strategy" className="text-gray-300 hover:text-white transition-colors">
-                    Learning Strategy
-                  </a>
-                </li>
-                <li>
-                  <a href="#neuroscience-101" className="text-gray-300 hover:text-white transition-colors">
-                    Neuroscience 101
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    EEG Technology
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    BCI Interface
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Solutions */}
-            <div>
-              <h3 className="text-lg font-semibold mb-4 text-cyan-400">Solutions</h3>
-              <ul className="space-y-2 text-sm">
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    For Parents
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    For Teachers
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    For Schools
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    For Districts
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    Homeschooling
-                  </a>
-                </li>
-                <li>
-                  <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                    Tutoring Centers
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            {/* Right Side - AlgebraAI and Support */}
-            <div>
-              <div className="mb-6">
-                <div className="flex items-center space-x-2 mb-3">
-                  <span className="text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-400 bg-clip-text text-transparent">
-                    AlgebraAI
-                  </span>
-                </div>
-                <div className="text-gray-300 text-sm mb-4">
-                  Helping K12 students master algebra with personalized, brain-adaptive learning experiences.
-                </div>
-              </div>
-
-              <div>
-                <h3 className="text-lg font-semibold mb-4 text-cyan-400">Support</h3>
-                <ul className="space-y-2 text-sm">
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Help Center
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Contact Us
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Live Chat
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      System Status
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                      Training Resources
-                    </a>
-                  </li>
-                </ul>
-              </div>
-            </div>
-          </div>
-
-          {/* Bottom Section */}
-          <div className="border-t border-gray-700 pt-8">
-            <div className="flex flex-col lg:flex-row justify-between items-center space-y-4 lg:space-y-0">
-              {/* Legal Links */}
-              <div className="flex flex-wrap justify-center lg:justify-start space-x-6 text-sm">
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
+                <a href="https://ia.intelladapt.ai/privacy-policy" className="text-gray-300 hover:text-white transition-colors">
                   Privacy Policy
                 </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Terms of Service
-                </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  COPPA Compliance
-                </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  FERPA Compliance
-                </a>
-                <a href="#" className="text-gray-300 hover:text-white transition-colors">
-                  Accessibility
-                </a>
               </div>
 
-              {/* Copyright */}
-              <div className="text-sm text-gray-400 text-center lg:text-right">
-                <div>© 2024 intellADAPT & AlgebraAI. All rights reserved.</div>
-                <div className="mt-1">Powered by neuroscience-based adaptive learning technology.</div>
-              </div>
+              {/* Right Side - Powered by */}
+              <a href="https://ia.intelladapt.ai/" className="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors">
+                <span>Powered by</span>
+                <img src="/IA Logo.png" alt="IA Logo" className="h-6 w-auto" />
+                <span>IntellAdapt</span>
+              </a>
             </div>
 
-            {/* Additional Info */}
-            <div className="mt-6 pt-6 border-t border-gray-800">
-              <div className="grid md:grid-cols-3 gap-6 text-sm text-gray-400">
-                <div>
-                  <h4 className="font-semibold text-gray-300 mb-2">Safety & Compliance</h4>
-                  <div>FDA-approved EEG technology • COPPA & FERPA compliant • SOC 2 Type II certified</div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-300 mb-2">Contact Information</h4>
-                  <div>
-                    Email: support@algebraai.com
-                    <br />
-                    Phone: 1-800-ALGEBRA
-                    <br />
-                    Hours: 24/7 Support Available
-                  </div>
-                </div>
-                <div>
-                  <h4 className="font-semibold text-gray-300 mb-2">Awards & Recognition</h4>
-                  <div>EdTech Breakthrough Award 2024 • Best AI Learning Platform • Top K12 Innovation</div>
-                </div>
-              </div>
+            {/* Middle Row - Social Media Icons */}
+            <div className="flex space-x-4">
+              <a href="https://www.facebook.com/profile.php?id=61579068315080" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
+                </svg>
+              </a>
+              <a href="https://www.instagram.com/intelladapt/" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/>
+                </svg>
+              </a>
+              <a href="https://www.linkedin.com/company/intelladapt/" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+              </a>
+              <a href="https://ia.intelladapt.ai/" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+                </svg>
+              </a>
+              <a href="https://www.youtube.com/@intellADAPTBoston" className="text-gray-400 hover:text-white transition-colors">
+                <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/>
+                </svg>
+              </a>
+            </div>
+
+            {/* Bottom Row - Copyright */}
+            <div className="text-sm text-gray-300 text-center">
+              © 2025 Algebra AI by Intelladapt. All rights reserved.
             </div>
           </div>
         </div>
       </footer>
 
       {/* Chat Widget */}
-      <ChatWidget />
+      {/* <ChatWidget /> */}
     </div>
   )
 }
