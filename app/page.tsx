@@ -28,6 +28,54 @@ export default function AlgebraAILanding() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
+  useEffect(() => {
+    // Handle video loading with better initialization
+    const initializeVideo = () => {
+      const video = document.getElementById('demo-video') as HTMLVideoElement
+      const fallback = document.getElementById('video-fallback')
+      
+      if (video && fallback) {
+        const handleCanPlay = () => {
+          fallback.style.display = 'none'
+          console.log('Video loaded successfully')
+        }
+        
+        const handleError = () => {
+          console.error('Video failed to load')
+          fallback.innerHTML = `
+            <div class="text-center p-8">
+              <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
+                <BookOpen class="w-10 h-10 text-red-600" />
+              </div>
+              <p class="text-lg font-medium text-red-800">Video Loading Failed</p>
+              <p class="text-sm text-red-600">Please check the video file</p>
+            </div>
+          `
+        }
+        
+        video.addEventListener('canplay', handleCanPlay)
+        video.addEventListener('error', handleError)
+        
+        // Force video to load immediately
+        console.log('Initializing video...')
+        video.load()
+        
+        return () => {
+          video.removeEventListener('canplay', handleCanPlay)
+          video.removeEventListener('error', handleError)
+        }
+      }
+    }
+    
+    // Try to initialize immediately
+    initializeVideo()
+    
+    // Also try after a short delay to ensure DOM is ready
+    const timer = setTimeout(initializeVideo, 100)
+    
+    return () => clearTimeout(timer)
+  }, [])
+
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
     if (element) {
@@ -197,7 +245,7 @@ export default function AlgebraAILanding() {
               technology that personalizes algebra education for K12 students, making complex concepts easier to
               understand and master.
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
               <Button
                 onClick={scrollToCTA}
                 size="lg"
@@ -206,10 +254,39 @@ export default function AlgebraAILanding() {
                 <Rocket className="w-5 h-5 mr-2" />
                 Start Learning Free
               </Button>
-              <Button size="lg" className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors">
-                <BookOpen className="w-5 h-5 mr-2" />
-                Watch Demo
-              </Button>
+            </div>
+            
+            {/* Demo Video Section */}
+            <div className="max-w-4xl mx-auto">
+              <div className="relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
+                <video
+                  id="demo-video"
+                  className="w-full h-full object-cover"
+                  controls
+                  preload="metadata"
+                  playsInline
+                  muted
+                  onLoadStart={() => console.log('Video loading started')}
+                  onCanPlay={() => console.log('Video can play')}
+                  onError={(e) => console.error('Video error:', e)}
+                  onLoadedData={() => console.log('Video data loaded')}
+                  onLoad={() => console.log('Video load event')}
+                  onLoadedMetadata={() => console.log('Video metadata loaded')}
+                >
+                  <source src="/videos/demoAlgebra.mp4" type="video/mp4" />
+                  Your browser does not support the video tag.
+                </video>
+                {/* Fallback content if video fails to load */}
+                <div id="video-fallback" className="absolute inset-0 flex items-center justify-center bg-gray-100">
+                  <div className="text-center p-8">
+                    <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
+                      <BookOpen className="w-10 h-10 text-gray-600" />
+                    </div>
+                    <p className="text-lg font-medium text-gray-800">Demo Video</p>
+                    <p className="text-sm text-gray-600">Loading video...</p>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
         </section>

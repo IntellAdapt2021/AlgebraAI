@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Video Test</title>
+    <style>
+        body { font-family: Arial, sans-serif; padding: 20px; }
+        video { max-width: 100%; height: auto; }
+        .debug { margin: 20px 0; padding: 10px; background: #f0f0f0; }
+    </style>
+</head>
+<body>
+    <h1>Video Test Page</h1>
+    
+    <div class="debug">
+        <h3>Debug Info:</h3>
+        <p>Testing video: /videos/demoAlgebra.mp4</p>
+        <p>File size: 40MB</p>
+        <p>Format: MP4</p>
+    </div>
+    
+    <video id="test-video" controls width="800" height="450">
+        <source src="/videos/demoAlgebra.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    
+    <div class="debug">
+        <h3>Video Events:</h3>
+        <div id="events"></div>
+    </div>
+    
+    <script>
+        const video = document.getElementById('test-video');
+        const eventsDiv = document.getElementById('events');
+        
+        function logEvent(event) {
+            const div = document.createElement('div');
+            div.textContent = `${event.type}: ${new Date().toLocaleTimeString()}`;
+            eventsDiv.appendChild(div);
+        }
+        
+        video.addEventListener('loadstart', logEvent);
+        video.addEventListener('durationchange', logEvent);
+        video.addEventListener('loadedmetadata', logEvent);
+        video.addEventListener('loadeddata', logEvent);
+        video.addEventListener('canplay', logEvent);
+        video.addEventListener('canplaythrough', logEvent);
+        video.addEventListener('error', (e) => {
+            logEvent(e);
+            console.error('Video error:', e);
+            console.error('Error details:', video.error);
+        });
+        
+        // Test video loading
+        console.log('Video element:', video);
+        console.log('Video src:', video.currentSrc);
+        console.log('Video readyState:', video.readyState);
+    </script>
+</body>
+</html>
