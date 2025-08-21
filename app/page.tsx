@@ -18,6 +18,7 @@ export default function AlgebraAILanding() {
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showThankYou, setShowThankYou] = useState(false)
+  const [showModules, setShowModules] = useState(false)
 
   useEffect(() => {
     const handleScroll = () => {
@@ -791,7 +792,7 @@ export default function AlgebraAILanding() {
         <section id="pricing" className="bg-white py-16">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
-              <h2 className="text-4xl font-bold mb-4 text-gray-800">Choose Your AlgebraAI Plan</h2>
+              <h2 className="text-4xl font-bold mb-4 text-gray-800">Choose Your AlgebraAI Plan, All Plans Free For 1 Month!</h2>
               <div className="text-xl text-gray-600 max-w-3xl mx-auto">
                 Flexible options for families and schools, with or without EEG technology
               </div>
@@ -1045,147 +1046,155 @@ export default function AlgebraAILanding() {
                   Each module adapts to your child's learning strategy and brain patterns, ensuring mastery before
                   progression
                 </div>
+                <Button
+                  onClick={() => setShowModules(!showModules)}
+                  className="mt-6 bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white px-8 py-3 transition-colors"
+                >
+                  {showModules ? 'Hide Modules' : 'View All Modules'}
+                </Button>
               </div>
 
-              <div className="grid gap-6 max-w-6xl mx-auto">
-                {/* Module 1: Foundations */}
-                <Card className="border-2 border-blue-200 bg-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">1</span>
+              {showModules && (
+                <div className="grid gap-6 max-w-6xl mx-auto">
+                  {/* Module 1: Foundations */}
+                  <Card className="border-2 border-blue-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">1</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-blue-600">Module 1: Foundations for Algebra</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Building essential mathematical thinking skills
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-xl text-blue-600">Module 1: Foundations for Algebra</CardTitle>
-                        <CardDescription className="text-gray-600">
-                          Building essential mathematical thinking skills
-                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-3">
+                        <strong>Core Topics:</strong> Variables and expressions, order of operations (PEMDAS), real
+                        numbers and number line, properties of real numbers, adding/subtracting real numbers,
+                        multiplying/dividing real numbers, distributive property, introduction to equations
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600 mb-3">
-                      <strong>Core Topics:</strong> Variables and expressions, order of operations (PEMDAS), real
-                      numbers and number line, properties of real numbers, adding/subtracting real numbers,
-                      multiplying/dividing real numbers, distributive property, introduction to equations
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <strong>Brain-Adaptive Features:</strong> Uses the SOLVE method for systematic problem-solving and
-                      identifies learning gaps through personalized pacing
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="text-sm text-gray-500">
+                        <strong>Brain-Adaptive Features:</strong> Uses the SOLVE method for systematic problem-solving and
+                        identifies learning gaps through personalized pacing
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                {/* Modules 2-3: Equations & Inequalities */}
-                <Card className="border-2 border-green-200 bg-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">2-3</span>
+                  {/* Modules 2-3: Equations & Inequalities */}
+                  <Card className="border-2 border-green-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">2-3</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-green-600">Modules 2-3: Equations & Inequalities</CardTitle>
+                          <CardDescription className="text-gray-600">Mastering algebraic problem solving</CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-xl text-green-600">Modules 2-3: Equations & Inequalities</CardTitle>
-                        <CardDescription className="text-gray-600">Mastering algebraic problem solving</CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-3">
+                        <strong>Core Topics:</strong> Linear equations, multi-step equations, inequalities, graphing
+                        solutions, real-world applications
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600 mb-3">
-                      <strong>Core Topics:</strong> Linear equations, multi-step equations, inequalities, graphing
-                      solutions, real-world applications
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <strong>Brain-Adaptive Features:</strong> Adjusts complexity based on cognitive load and
-                      comprehension patterns
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="text-sm text-gray-500">
+                        <strong>Brain-Adaptive Features:</strong> Adjusts complexity based on cognitive load and
+                        comprehension patterns
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                {/* Modules 4-5: Functions & Graphs */}
-                <Card className="border-2 border-purple-200 bg-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">4-5</span>
+                  {/* Modules 4-5: Functions & Graphs */}
+                  <Card className="border-2 border-purple-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">4-5</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-purple-600">Modules 4-5: Functions & Graphs</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Understanding relationships and visual representation
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-xl text-purple-600">Modules 4-5: Functions & Graphs</CardTitle>
-                        <CardDescription className="text-gray-600">
-                          Understanding relationships and visual representation
-                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-3">
+                        <strong>Core Topics:</strong> Function notation, linear functions, slope, graphing techniques,
+                        interpreting graphs, domain and range
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600 mb-3">
-                      <strong>Core Topics:</strong> Function notation, linear functions, slope, graphing techniques,
-                      interpreting graphs, domain and range
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <strong>Brain-Adaptive Features:</strong> Visual learning optimization based on individual
-                      processing preferences
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="text-sm text-gray-500">
+                        <strong>Brain-Adaptive Features:</strong> Visual learning optimization based on individual
+                        processing preferences
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                {/* Modules 6-8: Systems, Exponents, Polynomials */}
-                <Card className="border-2 border-orange-200 bg-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-lg">6-8</span>
+                  {/* Modules 6-8: Systems, Exponents, Polynomials */}
+                  <Card className="border-2 border-orange-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">6-8</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-orange-600">
+                            Modules 6-8: Systems, Exponents, Polynomials
+                          </CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Advanced algebraic concepts and operations
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-xl text-orange-600">
-                          Modules 6-8: Systems, Exponents, Polynomials
-                        </CardTitle>
-                        <CardDescription className="text-gray-600">
-                          Advanced algebraic concepts and operations
-                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-3">
+                        <strong>Core Topics:</strong> Systems of equations, exponent rules, polynomial operations,
+                        factoring, algebraic manipulation
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600 mb-3">
-                      <strong>Core Topics:</strong> Systems of equations, exponent rules, polynomial operations,
-                      factoring, algebraic manipulation
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <strong>Brain-Adaptive Features:</strong> Breaks complex concepts into digestible steps based on
-                      cognitive capacity
-                    </div>
-                  </CardContent>
-                </Card>
+                      <div className="text-sm text-gray-500">
+                        <strong>Brain-Adaptive Features:</strong> Breaks complex concepts into digestible steps based on
+                        cognitive capacity
+                      </div>
+                    </CardContent>
+                  </Card>
 
-                {/* Modules 9-13: Advanced Topics */}
-                <Card className="border-2 border-indigo-200 bg-white hover:shadow-lg transition-shadow">
-                  <CardHeader>
-                    <div className="flex items-center space-x-4">
-                      <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                        <span className="text-white font-bold text-sm">9-13</span>
+                  {/* Modules 9-13: Advanced Topics */}
+                  <Card className="border-2 border-indigo-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-sm">9-13</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-indigo-600">
+                            Modules 9-13: Quadratics, Radicals, Data Analysis
+                          </CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Advanced topics and real-world applications
+                          </CardDescription>
+                        </div>
                       </div>
-                      <div>
-                        <CardTitle className="text-xl text-indigo-600">
-                          Modules 9-13: Quadratics, Radicals, Data Analysis
-                        </CardTitle>
-                        <CardDescription className="text-gray-600">
-                          Advanced topics and real-world applications
-                        </CardDescription>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-3">
+                        <strong>Core Topics:</strong> Quadratic equations, parabolas, radical expressions, statistics,
+                        probability, data interpretation, advanced problem solving
                       </div>
-                    </div>
-                  </CardHeader>
-                  <CardContent>
-                    <div className="text-gray-600 mb-3">
-                      <strong>Core Topics:</strong> Quadratic equations, parabolas, radical expressions, statistics,
-                      probability, data interpretation, advanced problem solving
-                    </div>
-                    <div className="text-sm text-gray-500">
-                      <strong>Brain-Adaptive Features:</strong> Connects abstract concepts to real-world applications
-                      based on learning strategy
-                    </div>
-                  </CardContent>
-                </Card>
-              </div>
+                      <div className="text-sm text-gray-500">
+                        <strong>Brain-Adaptive Features:</strong> Connects abstract concepts to real-world applications
+                        based on learning strategy
+                      </div>
+                    </CardContent>
+                  </Card>
+                </div>
+              )}
 
               <div className="text-center mt-8">
                 <div className="bg-gradient-to-r from-[#7deaff]/10 to-white rounded-2xl p-6 max-w-4xl mx-auto">
