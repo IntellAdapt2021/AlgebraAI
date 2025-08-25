@@ -283,7 +283,7 @@ export default function AlgebraAILanding() {
                 variant="outline"
                 className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 transition-colors"
               >
-                Get Started
+                Get Started For Pilot
               </Button>
             </div>
             
@@ -1550,6 +1550,7 @@ export default function AlgebraAILanding() {
                         <option value="family-standard">Family Standard ($29/month)</option>
                         <option value="family-premium">Family Premium with EEG ($79/month)</option>
                         <option value="school">School/District (Custom pricing)</option>
+                        <option value="pilot">Pilot</option>
                       </select>
                     </div>
 
