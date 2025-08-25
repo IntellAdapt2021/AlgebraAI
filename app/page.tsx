@@ -11,6 +11,7 @@ import { Rocket, Users, BookOpen, Target, Menu, Home, School, Brain, CheckCircle
 import EEGTooltip from "@/components/EEGTooltip"
 import ChatWidget from "@/components/ChatWidget"
 import { submitForm } from "./actions/submit-form"
+import { submitContactForm } from "./actions/submit-contact-form"
 
 export default function AlgebraAILanding() {
   const [isOpen, setIsOpen] = useState(false)
@@ -19,6 +20,9 @@ export default function AlgebraAILanding() {
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [showThankYou, setShowThankYou] = useState(false)
   const [showModules, setShowModules] = useState(false)
+  const [contactFormSubmitted, setContactFormSubmitted] = useState(false)
+  const [isContactSubmitting, setIsContactSubmitting] = useState(false)
+  const [contactMessage, setContactMessage] = useState("")
 
   useEffect(() => {
     const handleScroll = () => {
@@ -126,6 +130,34 @@ export default function AlgebraAILanding() {
     }
   }
 
+  const handleContactFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    setIsContactSubmitting(true)
+
+    const formData = new FormData(e.currentTarget)
+
+    try {
+      const result = await submitContactForm(formData)
+      if (result.success) {
+        setContactFormSubmitted(true)
+        setContactMessage(result.message)
+        // Reset form after successful submission
+        const form = document.getElementById("contact-form") as HTMLFormElement
+        if (form) form.reset()
+        // Hide success message after 5 seconds
+        setTimeout(() => {
+          setContactFormSubmitted(false)
+          setContactMessage("")
+        }, 5000)
+      }
+    } catch (error) {
+      console.error("Contact form submission error:", error)
+      setContactMessage("There was an error sending your message. Please try again.")
+    } finally {
+      setIsContactSubmitting(false)
+    }
+  }
+
   const navItems = [
     { label: "Features", id: "features" },
     { label: "Why AlgebraAI?", id: "why-algebraai" },
@@ -172,12 +204,7 @@ export default function AlgebraAILanding() {
               >
                 Sign In
               </Button>
-              <Button
-                onClick={scrollToCTA}
-                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
-              >
-                Get Started
-              </Button>
+
             </div>
 
             {/* Mobile Navigation */}
@@ -216,12 +243,7 @@ export default function AlgebraAILanding() {
                       >
                         Sign In
                       </Button>
-                      <Button
-                        onClick={scrollToCTA}
-                        className="w-full border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
-                      >
-                        Get Started
-                      </Button>
+
                     </div>
                   </div>
                 </SheetContent>
@@ -254,6 +276,14 @@ export default function AlgebraAILanding() {
               >
                 <Rocket className="w-5 h-5 mr-2" />
                 Start Learning Free
+              </Button>
+              <Button
+                onClick={scrollToCTA}
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 transition-colors"
+              >
+                Get Started
               </Button>
             </div>
             
@@ -1610,7 +1640,7 @@ export default function AlgebraAILanding() {
                 {/* Contact Form */}
                 <div className="bg-white rounded-2xl p-8 shadow-lg">
                   <h3 className="text-2xl font-bold text-gray-800 mb-6">Send us a message</h3>
-                  <form className="space-y-6">
+                  <form id="contact-form" className="space-y-6" onSubmit={handleContactFormSubmit}>
                     <div className="grid md:grid-cols-2 gap-4">
                       <div>
                         <label htmlFor="contact-name" className="block text-sm font-medium text-gray-700 mb-2">
@@ -1728,11 +1758,31 @@ export default function AlgebraAILanding() {
 
                     <Button
                       type="submit"
-                      className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-4 transition-colors"
+                      disabled={isContactSubmitting}
+                      className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-4 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isContactSubmitting ? "Sending..." : "Send Message"}
                     </Button>
                   </form>
+
+                  {/* Success Message */}
+                  {contactFormSubmitted && (
+                    <div className="mt-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+                      <div className="flex items-center space-x-2">
+                        <CheckCircle className="h-5 w-5 text-green-600" />
+                        <p className="text-green-800 font-medium">{contactMessage}</p>
+                      </div>
+                    </div>
+                  )}
+
+                  {/* Error Message */}
+                  {contactMessage && !contactFormSubmitted && contactMessage.includes("error") && (
+                    <div className="mt-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+                      <div className="flex items-center space-x-2">
+                        <p className="text-red-800 font-medium">{contactMessage}</p>
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </div>
