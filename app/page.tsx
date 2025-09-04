@@ -285,6 +285,15 @@ export default function AlgebraAILanding() {
               >
                 Get Started For Pilot
               </Button>
+              <Button
+                onClick={() => window.open('/homework-solution', '_blank')}
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 transition-colors"
+              >
+                <BookOpen className="w-5 h-5 mr-2" />
+                Homework Solution
+              </Button>
             </div>
             
             {/* Demo Video Section */}
