@@ -1,11 +1,39 @@
 "use client"
 
+import { useState } from "react"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { BookOpen, Brain, Target, Users, ArrowLeft } from "lucide-react"
+import { BookOpen, Brain, Target, Users, ArrowLeft, Home } from "lucide-react"
 import Link from "next/link"
+import { submitWaitlistEmail } from "../actions/submit-waitlist"
 
 export default function HomeworkSolutionPage() {
+  const [email, setEmail] = useState("")
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [message, setMessage] = useState("")
+  const [isSuccess, setIsSuccess] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    if (!email.trim()) return
+
+    setIsSubmitting(true)
+    setMessage("")
+
+    const formData = new FormData()
+    formData.append('email', email.trim())
+    formData.append('source', 'Homework Solution')
+
+    const result = await submitWaitlistEmail(formData)
+    
+    setIsSubmitting(false)
+    setIsSuccess(result.success)
+    setMessage(result.message)
+    
+    if (result.success) {
+      setEmail("")
+    }
+  }
   return (
     <div className="min-h-screen bg-gradient-to-br from-[#7deaff]/10 via-white to-[#7deaff]/5">
       {/* Header */}
@@ -105,26 +133,43 @@ export default function HomeworkSolutionPage() {
               </CardDescription>
             </CardHeader>
             <CardContent>
-              <div className="space-y-4">
+              <form onSubmit={handleSubmit} className="space-y-4">
                 <div className="flex flex-col sm:flex-row gap-4">
                   <input
                     type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
                     placeholder="Enter your email address"
                     className="flex-1 px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent transition-colors"
+                    required
+                    disabled={isSubmitting}
                   />
-                  <Button className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white px-8 py-3 transition-colors">
-                    Notify Me
+                  <Button 
+                    type="submit"
+                    disabled={isSubmitting || !email.trim()}
+                    className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white px-8 py-3 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+                  >
+                    {isSubmitting ? "Submitting..." : "Notify Me"}
                   </Button>
                 </div>
+                {message && (
+                  <div className={`text-sm p-3 rounded-lg ${
+                    isSuccess 
+                      ? "bg-green-100 text-green-700 border border-green-200" 
+                      : "bg-red-100 text-red-700 border border-red-200"
+                  }`}>
+                    {message}
+                  </div>
+                )}
                 <div className="text-sm text-gray-500">
                   We'll send you an email when Homework Solution is ready. No spam, unsubscribe anytime.
                 </div>
-              </div>
+              </form>
             </CardContent>
           </Card>
 
           {/* Back to Main Site */}
-          <div className="mt-12">
+          <div className="mt-12 flex flex-col sm:flex-row gap-4 justify-center">
             <Link href="/">
               <Button 
                 size="lg"
@@ -132,6 +177,16 @@ export default function HomeworkSolutionPage() {
               >
                 <ArrowLeft className="w-5 h-5 mr-2" />
                 Back to AlgebraAI Home
+              </Button>
+            </Link>
+            <Link href="/homeschool">
+              <Button 
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 transition-colors"
+              >
+                <Home className="w-5 h-5 mr-2" />
+                Homeschooling
               </Button>
             </Link>
           </div>

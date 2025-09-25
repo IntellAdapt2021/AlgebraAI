@@ -33,53 +33,6 @@ export default function AlgebraAILanding() {
     return () => window.removeEventListener("scroll", handleScroll)
   }, [])
 
-  useEffect(() => {
-    // Handle video loading with better initialization
-    const initializeVideo = () => {
-      const video = document.getElementById('demo-video') as HTMLVideoElement
-      const fallback = document.getElementById('video-fallback')
-      
-      if (video && fallback) {
-        const handleCanPlay = () => {
-          fallback.style.display = 'none'
-          console.log('Video loaded successfully')
-        }
-        
-        const handleError = () => {
-          console.error('Video failed to load')
-          fallback.innerHTML = `
-            <div class="text-center p-8">
-              <div class="w-20 h-20 bg-red-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                <BookOpen class="w-10 h-10 text-red-600" />
-              </div>
-              <p class="text-lg font-medium text-red-800">Video Loading Failed</p>
-              <p class="text-sm text-red-600">Please check the video file</p>
-            </div>
-          `
-        }
-        
-        video.addEventListener('canplay', handleCanPlay)
-        video.addEventListener('error', handleError)
-        
-        // Force video to load immediately
-        console.log('Initializing video...')
-        video.load()
-        
-        return () => {
-          video.removeEventListener('canplay', handleCanPlay)
-          video.removeEventListener('error', handleError)
-        }
-      }
-    }
-    
-    // Try to initialize immediately
-    initializeVideo()
-    
-    // Also try after a short delay to ensure DOM is ready
-    const timer = setTimeout(initializeVideo, 100)
-    
-    return () => clearTimeout(timer)
-  }, [])
 
   const scrollToSection = (sectionId: string) => {
     const element = document.getElementById(sectionId)
@@ -294,40 +247,17 @@ export default function AlgebraAILanding() {
                 <BookOpen className="w-5 h-5 mr-2" />
                 Homework Solution
               </Button>
+              <Button
+                onClick={() => window.open('/homeschool', '_blank')}
+                size="lg"
+                variant="outline"
+                className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 transition-colors"
+              >
+                <Home className="w-5 h-5 mr-2" />
+                Homeschooling
+              </Button>
             </div>
             
-            {/* Demo Video Section */}
-            <div className="max-w-4xl mx-auto">
-              <div className="relative aspect-video bg-gray-100 rounded-2xl overflow-hidden shadow-2xl">
-                <video
-                  id="demo-video"
-                  className="w-full h-full object-cover"
-                  controls
-                  preload="metadata"
-                  playsInline
-                  muted
-                  onLoadStart={() => console.log('Video loading started')}
-                  onCanPlay={() => console.log('Video can play')}
-                  onError={(e) => console.error('Video error:', e)}
-                  onLoadedData={() => console.log('Video data loaded')}
-                  onLoad={() => console.log('Video load event')}
-                  onLoadedMetadata={() => console.log('Video metadata loaded')}
-                >
-                  <source src="/videos/demoAlgebra.mp4" type="video/mp4" />
-                  Your browser does not support the video tag.
-                </video>
-                {/* Fallback content if video fails to load */}
-                <div id="video-fallback" className="absolute inset-0 flex items-center justify-center bg-gray-100">
-                  <div className="text-center p-8">
-                    <div className="w-20 h-20 bg-gray-300 rounded-full flex items-center justify-center mx-auto mb-4">
-                      <BookOpen className="w-10 h-10 text-gray-600" />
-                    </div>
-                    <p className="text-lg font-medium text-gray-800">Demo Video</p>
-                    <p className="text-sm text-gray-600">Loading video...</p>
-                  </div>
-                </div>
-              </div>
-            </div>
           </div>
         </section>
 
@@ -916,7 +846,7 @@ export default function AlgebraAILanding() {
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>All 13 algebra modules</span>
+                      <span>All 12 algebra modules</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
@@ -1069,16 +999,16 @@ export default function AlgebraAILanding() {
                 Complete Algebra Curriculum with AI-Powered Learning
               </h2>
               <div className="text-xl text-gray-600 max-w-3xl mx-auto">
-                13 adaptive modules that take students from foundations to advanced topics, personalized by
+                12 adaptive modules that take students from foundations to advanced topics, personalized by
                 brain-powered technology
               </div>
             </div>
 
-            {/* 13 Adaptive Modules Section */}
+            {/* 12 Adaptive Modules Section */}
             <div className="mb-16">
               <div className="text-center mb-8">
                 <div className="mb-4 bg-white text-black border-2 border-[#7deaff] text-lg px-4 py-2 rounded-full inline-flex items-center">
-                  13 Adaptive Modules • Foundations to Advanced
+                  12 Adaptive Modules • Foundations to Advanced
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Progressive Learning Path</h3>
                 <div className="text-lg text-gray-600 max-w-2xl mx-auto">
@@ -1204,16 +1134,16 @@ export default function AlgebraAILanding() {
                     </CardContent>
                   </Card>
 
-                  {/* Modules 9-13: Advanced Topics */}
+                  {/* Modules 9-12: Advanced Topics */}
                   <Card className="border-2 border-indigo-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-sm">9-13</span>
+                          <span className="text-white font-bold text-sm">9-12</span>
                         </div>
                         <div>
                           <CardTitle className="text-xl text-indigo-600">
-                            Modules 9-13: Quadratics, Radicals, Data Analysis
+                            Modules 9-12: Quadratics, Radicals, Data Analysis
                           </CardTitle>
                           <CardDescription className="text-gray-600">
                             Advanced topics and real-world applications
