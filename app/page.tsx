@@ -7,7 +7,7 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Rocket, Users, BookOpen, Target, Menu, Home, School, Brain, CheckCircle } from "lucide-react"
+import { Rocket, Users, BookOpen, Target, Menu, Home, School, Brain, CheckCircle, Puzzle } from "lucide-react"
 import EEGTooltip from "@/components/EEGTooltip"
 import ChatWidget from "@/components/ChatWidget"
 import { submitForm } from "./actions/submit-form"
@@ -783,7 +783,7 @@ export default function AlgebraAILanding() {
               </div>
             )}
 
-            <div className="grid lg:grid-cols-4 gap-6 max-w-7xl mx-auto">
+            <div className="grid lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
               {/* Free Plan */}
               <Card className="border-2 border-gray-200 hover:shadow-xl transition-shadow">
                 <CardHeader className="text-center pb-6">
@@ -818,6 +818,51 @@ export default function AlgebraAILanding() {
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-gray-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Community support</span>
+                    </li>
+                  </ul>
+                  <Button
+                    onClick={handleTryNow}
+                    className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
+                  >
+                    Try Now
+                  </Button>
+                </CardContent>
+              </Card>
+
+              {/* Individual Module Plan */}
+              <Card className="border-2 border-orange-200 hover:shadow-xl transition-shadow">
+                <CardHeader className="text-center pb-6">
+                  <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
+                    <Puzzle className="w-8 h-8 text-white" />
+                  </div>
+                  <CardTitle className="text-2xl text-orange-600 mb-2">Individual Module</CardTitle>
+                  <CardDescription className="text-lg mb-4">Buy each module separately</CardDescription>
+                  <div className="text-4xl font-bold text-gray-800 mb-2">
+                    $10<span className="text-lg text-gray-500">/lifetime</span>
+                  </div>
+                  <div className="text-sm text-gray-500">Per module • One-time payment</div>
+                </CardHeader>
+                <CardContent>
+                  <ul className="space-y-3 text-gray-600 mb-6">
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>AI-powered adaptive learning</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Parent dashboard with progress insights</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Homework help recommendations</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Gamified learning experience</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-orange-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>24/7 customer support</span>
                     </li>
                   </ul>
                   <Button
@@ -1025,7 +1070,7 @@ export default function AlgebraAILanding() {
 
               {showModules && (
                 <div className="grid gap-6 max-w-6xl mx-auto">
-                  {/* Module 1: Foundations */}
+                  {/* Module 1: Foundations for Algebra */}
                   <Card className="border-2 border-blue-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
@@ -1035,130 +1080,395 @@ export default function AlgebraAILanding() {
                         <div>
                           <CardTitle className="text-xl text-blue-600">Module 1: Foundations for Algebra</CardTitle>
                           <CardDescription className="text-gray-600">
-                            Building essential mathematical thinking skills
+                            Establishes the essential groundwork for algebraic reasoning
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-gray-600 mb-3">
-                        <strong>Core Topics:</strong> Variables and expressions, order of operations (PEMDAS), real
-                        numbers and number line, properties of real numbers, adding/subtracting real numbers,
-                        multiplying/dividing real numbers, distributive property, introduction to equations
+                      <div className="text-gray-600 mb-4">
+                        Students explore the use of variables, operations, and numerical properties. Emphasis is placed on understanding and manipulating real numbers, applying order of operations, and forming and evaluating algebraic expressions.
                       </div>
-                      <div className="text-sm text-gray-500">
-                        <strong>Brain-Adaptive Features:</strong> Uses the SOLVE method for systematic problem-solving and
-                        identifies learning gaps through personalized pacing
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 1.1: Variables and Expressions</li>
+                          <li>• 1.2: Order of Operations and Evaluating Expressions</li>
+                          <li>• 1.3: Real Numbers and the Number Line</li>
+                          <li>• 1.4: Properties of Real Numbers</li>
+                          <li>• 1.5: Adding and Subtracting Real Numbers</li>
+                          <li>• 1.6: Multiplying and Dividing Real Numbers</li>
+                          <li>• 1.7: The Distributive Property</li>
+                          <li>• 1.8: An Introduction to Equations</li>
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Modules 2-3: Equations & Inequalities */}
+                  {/* Module 2: Solving Equations */}
                   <Card className="border-2 border-green-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">2-3</span>
+                          <span className="text-white font-bold text-lg">2</span>
                         </div>
                         <div>
-                          <CardTitle className="text-xl text-green-600">Modules 2-3: Equations & Inequalities</CardTitle>
-                          <CardDescription className="text-gray-600">Mastering algebraic problem solving</CardDescription>
+                          <CardTitle className="text-xl text-green-600">Module 2: Solving Equations</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Introduction to the process of solving equations
+                          </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-gray-600 mb-3">
-                        <strong>Core Topics:</strong> Linear equations, multi-step equations, inequalities, graphing
-                        solutions, real-world applications
+                      <div className="text-gray-600 mb-4">
+                        Beginning with simple one-step equations, and advancing to multi-step equations and those with variables on both sides. Students also explore proportional reasoning, percent problems, and practical applications using formulas and conversions.
                       </div>
-                      <div className="text-sm text-gray-500">
-                        <strong>Brain-Adaptive Features:</strong> Adjusts complexity based on cognitive load and
-                        comprehension patterns
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 2.1: Solving One-Step Equations</li>
+                          <li>• 2.2: Solving Two-Step Equations</li>
+                          <li>• 2.3: Solving Multi-Step Equations</li>
+                          <li>• 2.4: Solving Equations with Variables on Both Sides</li>
+                          <li>• 2.5: Literal Equations and Formulas</li>
+                          <li>• 2.6: Ratios, Rates, and Conversions</li>
+                          <li>• 2.7: Solving Proportions</li>
+                          <li>• 2.8: Proportions and Similar Figures</li>
+                          <li>• 2.9: Percent</li>
+                          <li>• 2.10: Change Expressed as a Percent</li>
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Modules 4-5: Functions & Graphs */}
+                  {/* Module 3: Solving Inequalities */}
                   <Card className="border-2 border-purple-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-r from-purple-500 to-pink-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">4-5</span>
+                          <span className="text-white font-bold text-lg">3</span>
                         </div>
                         <div>
-                          <CardTitle className="text-xl text-purple-600">Modules 4-5: Functions & Graphs</CardTitle>
+                          <CardTitle className="text-xl text-purple-600">Module 3: Solving Inequalities</CardTitle>
                           <CardDescription className="text-gray-600">
-                            Understanding relationships and visual representation
+                            Learn to interpret, represent, and solve linear inequalities
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-gray-600 mb-3">
-                        <strong>Core Topics:</strong> Function notation, linear functions, slope, graphing techniques,
-                        interpreting graphs, domain and range
+                      <div className="text-gray-600 mb-4">
+                        Students learn to interpret, represent, and solve linear inequalities. This includes one- and multi-step inequalities, graphical representations, and applying operations while considering inequality direction.
                       </div>
-                      <div className="text-sm text-gray-500">
-                        <strong>Brain-Adaptive Features:</strong> Visual learning optimization based on individual
-                        processing preferences
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 3.1: Inequalities and Their Graphs</li>
+                          <li>• 3.2: Solving Inequalities Using Addition or Subtraction</li>
+                          <li>• 3.3: Solving Inequalities Using Multiplication or Division</li>
+                          <li>• 3.4: Solving Multi-Step Inequalities</li>
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Modules 6-8: Systems, Exponents, Polynomials */}
+                  {/* Module 4: Introduction to Functions */}
                   <Card className="border-2 border-orange-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-lg">6-8</span>
+                          <span className="text-white font-bold text-lg">4</span>
                         </div>
                         <div>
-                          <CardTitle className="text-xl text-orange-600">
-                            Modules 6-8: Systems, Exponents, Polynomials
-                          </CardTitle>
+                          <CardTitle className="text-xl text-orange-600">Module 4: Introduction to Functions</CardTitle>
                           <CardDescription className="text-gray-600">
-                            Advanced algebraic concepts and operations
+                            Fundamental concept of a function as a relationship between two quantities
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-gray-600 mb-3">
-                        <strong>Core Topics:</strong> Systems of equations, exponent rules, polynomial operations,
-                        factoring, algebraic manipulation
+                      <div className="text-gray-600 mb-4">
+                        Introduces the fundamental concept of a function as a relationship between two quantities. Students explore function notation, identify patterns in data, and distinguish between linear and nonlinear relationships using graphs and arithmetic sequences.
                       </div>
-                      <div className="text-sm text-gray-500">
-                        <strong>Brain-Adaptive Features:</strong> Breaks complex concepts into digestible steps based on
-                        cognitive capacity
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 4.1: Using Graphs to Relate Two Quantities</li>
+                          <li>• 4.2: Patterns and Linear Functions</li>
+                          <li>• 4.3: Patterns and Nonlinear Functions</li>
+                          <li>• 4.4: Graphing a Function Rule</li>
+                          <li>• 4.5: Writing a Function Rule</li>
+                          <li>• 4.6: Formalizing Relations and Functions</li>
+                          <li>• 4.7: Arithmetic Sequence</li>
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>
 
-                  {/* Modules 9-12: Advanced Topics */}
+                  {/* Module 5: Linear Functions */}
                   <Card className="border-2 border-indigo-200 bg-white hover:shadow-lg transition-shadow">
                     <CardHeader>
                       <div className="flex items-center space-x-4">
                         <div className="w-16 h-16 bg-gradient-to-r from-indigo-500 to-purple-500 rounded-lg flex items-center justify-center">
-                          <span className="text-white font-bold text-sm">9-12</span>
+                          <span className="text-white font-bold text-lg">5</span>
                         </div>
                         <div>
-                          <CardTitle className="text-xl text-indigo-600">
-                            Modules 9-12: Quadratics, Radicals, Data Analysis
-                          </CardTitle>
+                          <CardTitle className="text-xl text-indigo-600">Module 5: Linear Functions</CardTitle>
                           <CardDescription className="text-gray-600">
-                            Advanced topics and real-world applications
+                            Expands understanding of linear relationships
                           </CardDescription>
                         </div>
                       </div>
                     </CardHeader>
                     <CardContent>
-                      <div className="text-gray-600 mb-3">
-                        <strong>Core Topics:</strong> Quadratic equations, parabolas, radical expressions, statistics,
-                        probability, data interpretation, advanced problem solving
+                      <div className="text-gray-600 mb-4">
+                        Expands students' understanding of linear relationships by examining various forms of linear equations, their graphs, and applications. Topics include slope, intercepts, forms of linear equations, and data analysis using scatter plots and trend lines.
                       </div>
-                      <div className="text-sm text-gray-500">
-                        <strong>Brain-Adaptive Features:</strong> Connects abstract concepts to real-world applications
-                        based on learning strategy
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 5.1: Rate of Change and Slope</li>
+                          <li>• 5.2: Direct Variation</li>
+                          <li>• 5.3: Slope-Intercept Form</li>
+                          <li>• 5.4: Point-Slope Form</li>
+                          <li>• 5.5: Standard Form</li>
+                          <li>• 5.6: Parallel and Perpendicular Lines</li>
+                          <li>• 5.7: Scatter Plots and Trend Lines</li>
+                          <li>• 5.8: Absolute Value Functions</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 6: Systems of Equations and Inequalities */}
+                  <Card className="border-2 border-teal-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-teal-500 to-cyan-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">6</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-teal-600">Module 6: Systems of Equations and Inequalities</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Investigate systems through graphical, substitution, and elimination methods
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Students investigate systems of equations and inequalities through graphical, substitution, and elimination methods. The module emphasizes real-world problem-solving and includes analysis of systems with one, none, or infinitely many solutions.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 6.1: Solving Systems by Graphing</li>
+                          <li>• 6.2: Solving Systems using Substitution</li>
+                          <li>• 6.3: Solving Systems using Elimination</li>
+                          <li>• 6.4: Applications of Linear Systems</li>
+                          <li>• 6.5: Linear Inequalities</li>
+                          <li>• 6.6: Systems of Linear Inequalities</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 7: Exponents and Exponential Functions */}
+                  <Card className="border-2 border-yellow-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-yellow-500 to-orange-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">7</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-yellow-600">Module 7: Exponents and Exponential Functions</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Focuses on the laws of exponents and their applications
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Focuses on the laws of exponents and their applications. Students learn how to manipulate expressions involving exponents, use scientific notation, and explore real-life examples of exponential growth and decay.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 7.1: Zero and Negative Exponents</li>
+                          <li>• 7.2: Scientific Notation</li>
+                          <li>• 7.3: Multiplying Powers with the Same Base</li>
+                          <li>• 7.4: More Multiplication Properties of Exponents</li>
+                          <li>• 7.5: Division Properties of Exponents</li>
+                          <li>• 7.6: Exponential Functions: Growth and Decay</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 8: Polynomials and Factoring */}
+                  <Card className="border-2 border-pink-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-pink-500 to-rose-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">8</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-pink-600">Module 8: Polynomials and Factoring</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Introduces polynomial expressions, operations, and factoring techniques
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Introduces polynomial expressions, operations, and factoring techniques. Students practice combining like terms, multiplying binomials, and using a variety of factoring strategies including special cases and grouping.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 8.1: Adding and Subtracting Polynomials</li>
+                          <li>• 8.2: Multiplying and Factoring</li>
+                          <li>• 8.3: Multiplying Binomials</li>
+                          <li>• 8.4: Multiplying Special Cases</li>
+                          <li>• 8.5: Factoring (general methods)</li>
+                          <li>• 8.6: Factoring (continued)</li>
+                          <li>• 8.7: Factoring Special Cases</li>
+                          <li>• 8.8: Factoring by Grouping</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 9: Quadratic Functions and Equations */}
+                  <Card className="border-2 border-emerald-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-emerald-500 to-green-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">9</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-emerald-600">Module 9: Quadratic Functions and Equations</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Students delve into quadratic relationships
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Students delve into quadratic relationships, learning to graph quadratic functions and solve quadratic equations using factoring, completing the square, and the quadratic formula. Comparisons with linear and exponential models are also included.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 9.1: Quadratic Graphs and Their Properties</li>
+                          <li>• 9.2: Quadratic Functions</li>
+                          <li>• 9.3: Solving Quadratic Equations</li>
+                          <li>• 9.4: Factoring to Solve Quadratic Equations</li>
+                          <li>• 9.5: Completing the Square</li>
+                          <li>• 9.6: The Quadratic Formula and the Discriminant</li>
+                          <li>• 9.7: Linear, Quadratic, and Exponential Models</li>
+                          <li>• 9.8: Systems of Linear and Quadratic Equations</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 10: Radical Expressions and Equations */}
+                  <Card className="border-2 border-amber-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-amber-500 to-yellow-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">10</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-amber-600">Module 10: Radical Expressions and Equations</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Covers operations with radical expressions
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Covers operations with radical expressions and how to solve and graph square root functions. Emphasis is placed on simplification techniques and recognizing domain restrictions.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 10.1: Simplifying Radicals</li>
+                          <li>• 10.2: Operations with Radical Expressions</li>
+                          <li>• 10.3: Graphing Square Root Functions</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 11: Rational Expressions and Functions */}
+                  <Card className="border-2 border-violet-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-violet-500 to-purple-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">11</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-violet-600">Module 11: Rational Expressions and Functions</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Teaches students to simplify, multiply, divide, add, and subtract rational expressions
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Teaches students to simplify, multiply, divide, add, and subtract rational expressions. Also includes inverse variation and concepts related to rational equations. Statistics concepts are introduced contextually.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 11.1: Simplify Rational Expressions</li>
+                          <li>• 11.2: Multiplying and Dividing Rational Expressions</li>
+                          <li>• 11.3: Dividing Polynomials</li>
+                          <li>• 11.4: Adding and Subtracting Rational Expressions</li>
+                          <li>• 11.5: Inverse Variation</li>
+                        </ul>
+                      </div>
+                    </CardContent>
+                  </Card>
+
+                  {/* Module 12: Data Analysis and Probability */}
+                  <Card className="border-2 border-slate-200 bg-white hover:shadow-lg transition-shadow">
+                    <CardHeader>
+                      <div className="flex items-center space-x-4">
+                        <div className="w-16 h-16 bg-gradient-to-r from-slate-500 to-gray-500 rounded-lg flex items-center justify-center">
+                          <span className="text-white font-bold text-lg">12</span>
+                        </div>
+                        <div>
+                          <CardTitle className="text-xl text-slate-600">Module 12: Data Analysis and Probability</CardTitle>
+                          <CardDescription className="text-gray-600">
+                            Introduces students to statistical analysis and basic probability
+                          </CardDescription>
+                        </div>
+                      </div>
+                    </CardHeader>
+                    <CardContent>
+                      <div className="text-gray-600 mb-4">
+                        Introduces students to statistical analysis and basic probability. Topics include data representation through plots and tables, linear regression, and calculating measures of central tendency and dispersion.
+                      </div>
+                      <div className="text-sm text-gray-600 mb-3">
+                        <strong>Subtopics:</strong>
+                        <ul className="mt-2 grid grid-cols-2 gap-1 text-xs">
+                          <li>• 12.1: Scatter Plots</li>
+                          <li>• 12.2: Linear Regression</li>
+                          <li>• 12.3: Frequency and Histograms</li>
+                          <li>• 12.4: Measures of Central Tendency and Dispersion</li>
+                          <li>• 12.5: Box-and-Whisker Plots</li>
+                          <li>• 12.6: Two-Way Frequency Tables</li>
+                        </ul>
                       </div>
                     </CardContent>
                   </Card>
