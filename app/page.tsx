@@ -762,8 +762,11 @@ export default function AlgebraAILanding() {
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">Choose Your AlgebraAI Plan, All Plans Free For 1 Month!</h2>
+              <div className="mb-4 bg-green-50 text-green-800 border-2 border-green-200 text-lg px-4 py-2 rounded-full inline-flex items-center">
+                ✓ USA State Standards Aligned Curriculum
+              </div>
               <div className="text-xl text-gray-600 max-w-3xl mx-auto">
-                Flexible options for families and schools, with or without EEG technology
+                Flexible options for families and schools, with or without EEG technology. All plans include curriculum aligned with USA state standards.
               </div>
             </div>
 
@@ -1045,7 +1048,7 @@ export default function AlgebraAILanding() {
               </h2>
               <div className="text-xl text-gray-600 max-w-3xl mx-auto">
                 12 adaptive modules that take students from foundations to advanced topics, personalized by
-                brain-powered technology
+                brain-powered technology and aligned with USA state standards
               </div>
             </div>
 
@@ -1053,12 +1056,12 @@ export default function AlgebraAILanding() {
             <div className="mb-16">
               <div className="text-center mb-8">
                 <div className="mb-4 bg-white text-black border-2 border-[#7deaff] text-lg px-4 py-2 rounded-full inline-flex items-center">
-                  12 Adaptive Modules • Foundations to Advanced
+                  12 Adaptive Modules • Foundations to Advanced • USA State Standards Aligned
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Progressive Learning Path</h3>
                 <div className="text-lg text-gray-600 max-w-2xl mx-auto">
                   Each module adapts to your child's learning strategy and brain patterns, ensuring mastery before
-                  progression
+                  progression. All content meets USA state standards for algebra education.
                 </div>
                 <Button
                   onClick={() => setShowModules(!showModules)}
