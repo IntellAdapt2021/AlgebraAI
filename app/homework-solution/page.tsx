@@ -213,7 +213,7 @@ export default function HomeworkSolutionPage() {
               </a>
             </div>
             <div className="text-sm text-gray-300 text-center">
-              © 2025 Algebra AI by Intelladapt. All rights reserved.
+              © 2026 Algebra AI by Intelladapt. All rights reserved.
             </div>
           </div>
         </div>

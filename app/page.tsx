@@ -796,7 +796,8 @@ export default function AlgebraAILanding() {
                   <CardTitle className="text-2xl text-gray-600 mb-2">Free</CardTitle>
                   <CardDescription className="text-lg mb-4">Get started with Module 1</CardDescription>
                   <div className="text-4xl font-bold text-gray-800 mb-2">
-                    $0<span className="text-lg text-gray-500">/forever</span>
+                    $0
+                    {/* <span className="text-lg text-gray-500">/forever</span> */}
                   </div>
                   <div className="text-sm text-gray-500">No EEG • Module 1 only</div>
                 </CardHeader>
@@ -2098,7 +2099,7 @@ export default function AlgebraAILanding() {
 
             {/* Bottom Row - Copyright */}
             <div className="text-sm text-gray-300 text-center">
-              © 2025 Algebra AI by Intelladapt. All rights reserved.
+              © 2026 Algebra AI by Intelladapt. All rights reserved.
             </div>
           </div>
         </div>

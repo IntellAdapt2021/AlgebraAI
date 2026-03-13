@@ -1427,7 +1427,7 @@ export default function HomeschoolLanding() {
 
             {/* Bottom Row - Copyright */}
             <div className="text-sm text-gray-300 text-center">
-              © 2025 Algebra AI by Intelladapt. All rights reserved. Perfect for Homeschooling Families.
+              © 2026 Algebra AI by Intelladapt. All rights reserved. Perfect for Homeschooling Families.
             </div>
           </div>
         </div>
