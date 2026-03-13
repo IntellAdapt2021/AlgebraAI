@@ -546,15 +546,15 @@ export default function HomeschoolLanding() {
                 Complete Homeschool Algebra Curriculum
               </h2>
               <div className="text-xl text-gray-600 max-w-3xl mx-auto">
-                13 adaptive modules designed specifically for homeschooling families, with flexible pacing and comprehensive coverage
+                12 adaptive modules designed specifically for homeschooling families, with flexible pacing and comprehensive coverage
               </div>
             </div>
 
-            {/* 13 Adaptive Modules Section */}
+            {/* 12 Adaptive Modules Section */}
             <div className="mb-16">
               <div className="text-center mb-8">
                 <div className="mb-4 bg-white text-black border-2 border-[#7deaff] text-lg px-4 py-2 rounded-full inline-flex items-center">
-                  13 Adaptive Modules • Perfect for Homeschooling
+                  12 Adaptive Modules • Perfect for Homeschooling
                 </div>
                 <h3 className="text-2xl font-bold text-gray-800 mb-4">Homeschool-Friendly Learning Path</h3>
                 <div className="text-lg text-gray-600 max-w-2xl mx-auto">

@@ -153,7 +153,7 @@ export default function AlgebraAILanding() {
               <Button 
                 variant="outline"
                 className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit"
-                onClick={() => window.open('https://pw.intelladapt.com/', '_blank')}
+                onClick={() => window.open('https://edwise.intelladapt.ai/login?redirect=%2F', '_blank')}
               >
                 Sign In
               </Button>
@@ -841,9 +841,9 @@ export default function AlgebraAILanding() {
                   <CardTitle className="text-2xl text-orange-600 mb-2">Individual Module</CardTitle>
                   <CardDescription className="text-lg mb-4">Buy each module separately</CardDescription>
                   <div className="text-4xl font-bold text-gray-800 mb-2">
-                    $10<span className="text-lg text-gray-500">/lifetime</span>
+                    $10<span className="text-lg text-gray-500"> /3 months</span>
                   </div>
-                  <div className="text-sm text-gray-500">Per module • One-time payment</div>
+                  {/* <div className="text-sm text-gray-500">Per module • One-time payment</div> */}
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-gray-600 mb-6">
