@@ -839,7 +839,7 @@ export default function AlgebraAILanding() {
                     onClick={handleTryNow}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
-                    Try Now
+                    Contact Us
                   </Button>
                 </CardContent>
               </Card>
@@ -1047,6 +1047,24 @@ export default function AlgebraAILanding() {
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>Professional development resources</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>
+                        Real-time <EEGTooltip showLearnMore={false}>EEG</EEGTooltip> brainwave monitoring
+                      </span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>BrainiakAI Learning Strategy analysis</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Advanced progress analytics</span>
+                    </li>
+                    <li className="flex items-start">
+                      <CheckCircle className="w-5 h-5 text-green-500 mr-2 flex-shrink-0 mt-0.5" />
+                      <span>Priority support & setup assistance</span>
                     </li>
                   </ul>
 
