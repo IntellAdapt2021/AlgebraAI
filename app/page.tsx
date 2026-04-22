@@ -13,6 +13,13 @@ import ChatWidget from "@/components/ChatWidget"
 import { submitForm } from "./actions/submit-form"
 import { submitContactForm } from "./actions/submit-contact-form"
 
+/**
+ * Pricing section: Individual Module, Standard, and Premium cards.
+ * Set to `true` to show all five tiers (Free + three family tiers + School/District).
+ * When `false`, only Free and School/District & Enterprise are rendered.
+ */
+const SHOW_EXTENDED_PRICING_CARDS = false
+
 export default function AlgebraAILanding() {
   const [isOpen, setIsOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
@@ -786,7 +793,11 @@ export default function AlgebraAILanding() {
               </div>
             )}
 
-            <div className="grid lg:grid-cols-5 gap-6 max-w-7xl mx-auto">
+            <div
+              className={`grid gap-6 mx-auto ${
+                SHOW_EXTENDED_PRICING_CARDS ? "lg:grid-cols-5 max-w-7xl" : "lg:grid-cols-2 max-w-4xl"
+              }`}
+            >
               {/* Free Plan */}
               <Card className="border-2 border-gray-200 hover:shadow-xl transition-shadow">
                 <CardHeader className="text-center pb-6">
@@ -833,8 +844,13 @@ export default function AlgebraAILanding() {
                 </CardContent>
               </Card>
 
-              {/* Individual Module Plan */}
-              <Card className="border-2 border-orange-200 hover:shadow-xl transition-shadow">
+              {SHOW_EXTENDED_PRICING_CARDS && (
+                <>
+                  {/* =============================================================================
+                       PRICING TIER: Individual Module ($10 / 3 months — buy modules separately)
+                       (Hidden while SHOW_EXTENDED_PRICING_CARDS is false — restore flag to show.)
+                       ============================================================================= */}
+                  <Card className="border-2 border-orange-200 hover:shadow-xl transition-shadow">
                 <CardHeader className="text-center pb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-orange-500 to-red-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <Puzzle className="w-8 h-8 text-white" />
@@ -877,8 +893,13 @@ export default function AlgebraAILanding() {
                   </Button>
                 </CardContent>
               </Card>
+              {/* =============================================================================
+                   END: Individual Module
+                   ============================================================================= */}
 
-              {/* Family Plan - Standard */}
+              {/* =============================================================================
+                   PRICING TIER: Standard ($29/mo — all 12 modules, no EEG)
+                   ============================================================================= */}
               <Card className="border-2 border-blue-200 hover:shadow-xl transition-shadow">
                 <CardHeader className="text-center pb-6">
                   <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full flex items-center justify-center mx-auto mb-4">
@@ -926,8 +947,13 @@ export default function AlgebraAILanding() {
                   </Button>
                 </CardContent>
               </Card>
+              {/* =============================================================================
+                   END: Standard
+                   ============================================================================= */}
 
-              {/* Family Plan - Premium with EEG */}
+              {/* =============================================================================
+                   PRICING TIER: Premium ($79/mo — EEG + Brainiak; MOST POPULAR badge)
+                   ============================================================================= */}
               <Card className="border-2 border-purple-200 hover:shadow-xl transition-shadow relative">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
                   <Badge className="bg-gradient-to-r from-purple-600 to-pink-600 text-white px-4 py-1">
@@ -974,17 +1000,7 @@ export default function AlgebraAILanding() {
                       <span>Priority support & setup assistance</span>
                     </li>
                   </ul>
-                  
-                  {/* EEG Headband Note */}
-                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-6">
-                    <div className="flex items-start space-x-2">
-                      <span className="text-amber-600 text-sm">⚠️</span>
-                      <div className="text-sm text-amber-800">
-                        <strong>Note:</strong> EEG headband is not included and needs to be purchased separately.
-                      </div>
-                    </div>
-                  </div>
-                  
+
                   <Button
                     onClick={handleTryNow}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
@@ -993,6 +1009,11 @@ export default function AlgebraAILanding() {
                   </Button>
                 </CardContent>
               </Card>
+                  {/* =============================================================================
+                       END: Premium
+                       ============================================================================= */}
+                </>
+              )}
 
               {/* School Plan */}
               <Card className="border-2 border-green-200 hover:shadow-xl transition-shadow">
@@ -1000,7 +1021,7 @@ export default function AlgebraAILanding() {
                   <div className="w-16 h-16 bg-gradient-to-r from-green-500 to-emerald-500 rounded-full flex items-center justify-center mx-auto mb-4">
                     <School className="w-8 h-8 text-white" />
                   </div>
-                  <CardTitle className="text-2xl text-green-600 mb-2">School & District</CardTitle>
+                  <CardTitle className="text-2xl text-green-600 mb-2">School/District & Enterprise</CardTitle>
                   <CardDescription className="text-lg mb-4">Comprehensive solution for educators</CardDescription>
                   <div className="text-4xl font-bold text-gray-800 mb-2">Custom</div>
                   <div className="text-sm text-gray-500">Volume pricing available</div>
@@ -1028,6 +1049,17 @@ export default function AlgebraAILanding() {
                       <span>Professional development resources</span>
                     </li>
                   </ul>
+
+                  {/* EEG Headband Note */}
+                  <div className="bg-amber-50 border border-amber-200 rounded-lg p-3 mb-6">
+                    <div className="flex items-start space-x-2">
+                      <span className="text-amber-600 text-sm">⚠️</span>
+                      <div className="text-sm text-amber-800">
+                        <strong>Note:</strong> EEG headband is not included and needs to be purchased separately.
+                      </div>
+                    </div>
+                  </div>
+
                   <Button
                     onClick={() => scrollToSection("contact")}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
