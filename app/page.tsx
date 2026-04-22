@@ -332,7 +332,7 @@ export default function AlgebraAILanding() {
                 <CardContent>
                   <div className="text-gray-600 text-center">
                     Continuous analysis of brainwave data provides instant insights into learning effectiveness and
-                    comprehension
+                    comprehension.
                   </div>
                 </CardContent>
               </Card>
