@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AlgebraAI for NYC Schools | AlgebraAI</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+    body { font-family: 'Inter', ui-sans-serif, system-ui, sans-serif; }
+</style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: { cyan: '#7deaff', cyanDark: '#1ba5ba' },
+          },
+        },
+      },
+    };
+  </script>
+</head>
+<body class="min-h-screen bg-gradient-to-br from-[#7deaff]/10 via-white to-[#7deaff]/5 text-gray-900 antialiased">
+
+  <header id="site-header" class="fixed top-0 left-0 right-0 z-50 transition-all duration-300 bg-transparent">
+    <div class="container mx-auto px-4 py-4">
+      <nav class="flex items-center justify-between gap-4">
+        <a href="https://algebraai.intelladapt.ai" class="flex items-center space-x-3 shrink-0 min-w-0">
+          <img src="public/IA Logo.png" alt="IA Logo" class="h-10 sm:h-12 w-auto" />
+          <div class="flex flex-col min-w-0">
+            <span class="text-xl sm:text-2xl font-bold text-gray-800 truncate">AlgebraAI</span>
+            <span class="text-xs sm:text-sm text-gray-600 font-medium truncate">Help Your Child Master Algebra</span>
+          </div>
+        </a>
+
+        <div class="hidden lg:flex items-center flex-wrap justify-end gap-2 max-w-3xl">
+          <a href="#solution" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-sm font-medium whitespace-nowrap">How It Works</a>
+          <a href="#curriculum" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-sm font-medium whitespace-nowrap">Curriculum</a>
+          <a href="#funding" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-sm font-medium whitespace-nowrap">Funding</a>
+          <a href="#pilot" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-sm font-medium whitespace-nowrap">Pilot Program</a>
+          <a href="https://edwise.intelladapt.ai/login?redirect=%2F" target="_blank" rel="noopener noreferrer" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-sm font-medium whitespace-nowrap">Sign In</a>
+  </div>
+
+        <button type="button" id="menu-btn" class="lg:hidden inline-flex items-center justify-center rounded-lg border-2 border-[#7deaff] p-2 text-gray-800 hover:bg-[#7deaff]/20" aria-expanded="false" aria-controls="mobile-nav">
+          <svg class="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+        </button>
+</nav>
+
+      <div id="mobile-nav" class="hidden lg:hidden mt-4 pb-2 flex flex-col space-y-3 border-t border-gray-200 pt-4">
+        <a href="#solution" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-left text-base font-medium">How It Works</a>
+        <a href="#curriculum" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-left text-base font-medium">Curriculum</a>
+        <a href="#funding" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-left text-base font-medium">Funding</a>
+        <a href="#pilot" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-left text-base font-medium">Pilot Program</a>
+        <a href="https://edwise.intelladapt.ai/login?redirect=%2F" target="_blank" rel="noopener noreferrer" class="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors text-center text-base font-medium">Sign In</a>
+      </div>
+    </div>
+  </header>
+
+  <div class="pt-20">
+    <!-- Hero -->
+    <section class="container mx-auto px-4 py-12 sm:py-16 text-center">
+      <div class="max-w-4xl mx-auto">
+        <div class="inline-flex items-center gap-2 rounded-full border-2 border-[#7deaff] bg-white/80 px-4 py-1.5 text-xs font-semibold uppercase tracking-wide text-gray-700 mb-6">
+          NYC K–12 Schools Initiative
+        </div>
+        <h1 class="text-4xl sm:text-5xl md:text-6xl font-bold mb-6 text-black leading-tight">
+          Algebra for <span class="text-[#1ba5ba]">Every</span> Student in Your School
+        </h1>
+        <p class="text-lg sm:text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          AlgebraAI delivers AI-powered, neuroscience-backed math instruction that meets each student where they are — free for NYC public schools through available grant funding.
+        </p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center flex-wrap">
+          <a href="#pilot" class="inline-flex items-center justify-center gap-2 bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 rounded-lg font-semibold transition-colors">Start a Free Pilot</a>
+          <a href="#solution" class="inline-flex items-center justify-center gap-2 border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#1ba5ba] hover:text-white text-lg px-8 py-3 rounded-lg font-semibold transition-colors">See How It Works</a>
+        </div>
+      </div>
+
+      <div class="max-w-4xl mx-auto mt-12 grid sm:grid-cols-3 gap-4 text-left">
+        <div class="rounded-2xl border-2 border-blue-200 bg-white p-6 shadow-sm">
+          <div class="text-3xl font-bold text-[#1ba5ba] mb-1">3×</div>
+          <p class="text-sm text-gray-600">Faster algebra mastery vs. traditional instruction</p>
+      </div>
+        <div class="rounded-2xl border-2 border-purple-200 bg-white p-6 shadow-sm">
+          <div class="text-3xl font-bold text-purple-600 mb-1">2</div>
+          <p class="text-sm text-gray-600">Average letter grade improvement per student</p>
+      </div>
+        <div class="rounded-2xl border-2 border-green-200 bg-white p-6 shadow-sm">
+          <div class="text-3xl font-bold text-green-600 mb-1">184K</div>
+          <p class="text-sm text-gray-600">NYC students targeted for after-school expansion by 2028</p>
+    </div>
+  </div>
+</section>
+
+    <!-- Proof bar -->
+    <div class="border-y border-gray-200 bg-gradient-to-r from-[#7deaff]/10 to-white py-5 px-4">
+      <p class="text-center text-sm text-gray-600 max-w-5xl mx-auto">
+        Aligned with <strong class="text-gray-800">NYC DOE standards</strong> · <strong class="text-gray-800">FERPA &amp; COPPA compliant</strong> · Eligible for <strong class="text-gray-800">DYCD COMPASS</strong>, <strong class="text-gray-800">Title I</strong>, <strong class="text-gray-800">Overdeck</strong> &amp; <strong class="text-gray-800">Robin Hood</strong> funding · <strong class="text-gray-800">FDA-approved EEG technology</strong>
+      </p>
+</div>
+
+    <!-- Problem -->
+    <section id="problem" class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[#1ba5ba] mb-3">The Challenge</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">NYC students are falling behind in algebra — and the gap is growing</h2>
+        <p class="text-lg text-gray-600">Only 1 in 5 NYC elementary students has access to after-school programs. For math, the opportunity gap is even wider.</p>
+      </div>
+      <div class="grid md:grid-cols-3 gap-6">
+        <div class="rounded-2xl border-2 border-blue-200 bg-white p-8 shadow-sm">
+          <div class="text-3xl mb-4">📉</div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">Algebra is the gateway subject</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Students who don't master algebra by 9th grade are 4× less likely to graduate college-ready. NYC proficiency rates remain well below national averages in Title I schools.</p>
+      </div>
+        <div class="rounded-2xl border-2 border-purple-200 bg-white p-8 shadow-sm">
+          <div class="text-3xl mb-4">🧩</div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">One-size teaching doesn't work</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">Every student's brain processes math differently. Traditional instruction can't adapt fast enough — students fall behind before a teacher even notices the gap.</p>
+      </div>
+        <div class="rounded-2xl border-2 border-green-200 bg-white p-8 shadow-sm">
+          <div class="text-3xl mb-4">⏰</div>
+          <h3 class="text-lg font-bold text-gray-800 mb-2">Teachers are stretched thin</h3>
+          <p class="text-gray-600 text-sm leading-relaxed">NYC teachers manage 25–35 students per class. There's simply no time for the individualized support that struggling algebra students need every day.</p>
+    </div>
+  </div>
+</section>
+
+    <!-- Solution -->
+    <section id="solution" class="bg-gradient-to-r from-[#7deaff]/10 to-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 max-w-3xl mx-auto">
+          <p class="text-sm font-semibold uppercase tracking-wider text-[#1ba5ba] mb-3">Our Solution</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">AI that learns how each student's brain works — and teaches accordingly</h2>
+          <p class="text-lg text-gray-600">AlgebraAI combines adaptive AI with optional EEG neuroscience technology to personalize algebra instruction for every student, every session.</p>
+        </div>
+
+        <div class="grid lg:grid-cols-2 gap-10 items-start max-w-6xl mx-auto">
+          <div class="space-y-6">
+            <div class="flex gap-4">
+              <div class="w-14 h-14 rounded-full bg-blue-100 flex items-center justify-center shrink-0 text-2xl">🧠</div>
+      <div>
+                <h3 class="font-bold text-gray-800 mb-1">Brainwave-Adaptive Learning</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Optional FDA-approved EEG headset detects when a student is focused, confused, or disengaged — and instantly adjusts the lesson. No more guessing.</p>
+              </div>
+            </div>
+            <div class="flex gap-4">
+              <div class="w-14 h-14 rounded-full bg-purple-100 flex items-center justify-center shrink-0 text-2xl">📊</div>
+          <div>
+                <h3 class="font-bold text-gray-800 mb-1">Real-Time Principal Dashboard</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">See school-wide math proficiency trends, flag at-risk students before they fail, and generate reports aligned to NYC DOE progress metrics.</p>
+          </div>
+        </div>
+            <div class="flex gap-4">
+              <div class="w-14 h-14 rounded-full bg-green-100 flex items-center justify-center shrink-0 text-2xl">🎯</div>
+          <div>
+                <h3 class="font-bold text-gray-800 mb-1">Learning Strategy Identification</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">AlgebraAI identifies whether each student is an Apprentice, Inductive, Deductive, or Discovery learner — then teaches them in their natural cognitive style.</p>
+          </div>
+        </div>
+            <div class="flex gap-4">
+              <div class="w-14 h-14 rounded-full bg-amber-100 flex items-center justify-center shrink-0 text-2xl">🏆</div>
+          <div>
+                <h3 class="font-bold text-gray-800 mb-1">Gamified Engagement</h3>
+                <p class="text-gray-600 text-sm leading-relaxed">Students earn badges, compete with classmates, and build confidence through mastery-based progression — reducing math anxiety and absenteeism.</p>
+          </div>
+        </div>
+          </div>
+
+          <div class="rounded-2xl border-2 border-gray-200 bg-white p-6 shadow-lg">
+            <div class="flex items-center gap-2 mb-4">
+              <span class="h-2.5 w-2.5 rounded-full bg-red-500"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-amber-500"></span>
+              <span class="h-2.5 w-2.5 rounded-full bg-emerald-500"></span>
+              <span class="text-xs font-medium text-gray-500 ml-2">Principal Dashboard — Live View</span>
+            </div>
+            <div class="mb-4">
+              <div class="text-sm font-semibold text-gray-700 mb-2">Class 7A · Module 3: Linear Equations</div>
+              <div class="grid grid-cols-3 gap-2">
+                <div class="bg-emerald-50 rounded-lg p-3 text-center">
+                  <div class="text-xl font-bold text-emerald-600">78%</div>
+                  <div class="text-[10px] text-emerald-800">On Track</div>
+                </div>
+                <div class="bg-amber-50 rounded-lg p-3 text-center">
+                  <div class="text-xl font-bold text-amber-600">15%</div>
+                  <div class="text-[10px] text-amber-900">Needs Support</div>
+                </div>
+                <div class="bg-red-50 rounded-lg p-3 text-center">
+                  <div class="text-xl font-bold text-red-600">7%</div>
+                  <div class="text-[10px] text-red-900">At Risk</div>
+        </div>
+      </div>
+          </div>
+            <div class="space-y-2 text-sm">
+              <div class="flex items-center justify-between gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                <div><span class="font-medium text-gray-800">Marcus J.</span><span class="block text-xs text-gray-500">7th Grade · Deductive Learner</span></div>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-emerald-100 text-emerald-800">On Track</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                <div><span class="font-medium text-gray-800">Sofia R.</span><span class="block text-xs text-gray-500">7th Grade · Apprentice Learner</span></div>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-amber-100 text-amber-900">Monitor</span>
+              </div>
+              <div class="flex items-center justify-between gap-2 rounded-lg border border-gray-200 bg-gray-50 px-3 py-2">
+                <div><span class="font-medium text-gray-800">Aiden T.</span><span class="block text-xs text-gray-500">7th Grade · Discovery Learner</span></div>
+                <span class="text-xs font-semibold px-2 py-0.5 rounded-full bg-blue-100 text-blue-800">Excelling</span>
+              </div>
+            </div>
+            <p class="mt-4 pt-4 border-t border-gray-200 text-xs text-gray-600">
+              AI Recommendation: <strong class="text-gray-800">Sofia needs visual step-by-step support on negative coefficient problems. Assigned adaptive module tonight.</strong>
+            </p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Curriculum -->
+    <section id="curriculum" class="container mx-auto px-4 py-16">
+      <div class="text-center mb-12 max-w-3xl mx-auto">
+        <p class="text-sm font-semibold uppercase tracking-wider text-[#1ba5ba] mb-3">Curriculum</p>
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">12 adaptive modules · NYC State Standards aligned</h2>
+        <p class="text-lg text-gray-600">From pre-algebra foundations through advanced topics — every module personalizes in real time to each student's pace and learning strategy.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-4 gap-4 max-w-6xl mx-auto">
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 1</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Foundations for Algebra</h4>
+          <p class="text-xs text-gray-600">Number sense, variables &amp; expressions, order of operations</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 2</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Equations &amp; Inequalities</h4>
+          <p class="text-xs text-gray-600">One &amp; two-step equations, solving &amp; graphing inequalities</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 3</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Linear Equations</h4>
+          <p class="text-xs text-gray-600">Slope, intercepts, graphing lines, rate of change</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 4</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Systems of Equations</h4>
+          <p class="text-xs text-gray-600">Substitution, elimination, real-world applications</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 5</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Functions &amp; Relations</h4>
+          <p class="text-xs text-gray-600">Domain, range, function notation, patterns</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 6</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Exponents &amp; Polynomials</h4>
+          <p class="text-xs text-gray-600">Laws of exponents, polynomial operations</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 7</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Factoring</h4>
+          <p class="text-xs text-gray-600">GCF, trinomials, difference of squares</p>
+        </div>
+        <div class="rounded-xl border-2 border-gray-100 bg-white p-5 shadow-sm hover:border-[#7deaff] transition-colors">
+          <div class="text-xs font-bold text-blue-600 uppercase tracking-wide mb-2">Module 8</div>
+          <h4 class="font-bold text-gray-800 text-sm mb-1">Quadratic Functions</h4>
+          <p class="text-xs text-gray-600">Parabolas, vertex form, quadratic formula</p>
+        </div>
+      </div>
+      <div class="text-center mt-10">
+        <a href="#pilot" class="inline-flex items-center justify-center bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 rounded-lg font-semibold transition-colors">See Full Curriculum + Request Pilot</a>
+      </div>
+    </section>
+
+    <!-- Funding -->
+    <section id="funding" class="bg-gradient-to-r from-[#7deaff]/10 to-white py-16">
+      <div class="container mx-auto px-4">
+        <div class="text-center mb-12 max-w-3xl mx-auto">
+          <p class="text-sm font-semibold uppercase tracking-wider text-[#1ba5ba] mb-3">Funding Options</p>
+          <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Free for your school. Covered by existing funding.</h2>
+          <p class="text-lg text-gray-600">NYC schools can access AlgebraAI at no cost through multiple funding streams already available to your district.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-6 max-w-6xl mx-auto">
+          <div class="rounded-2xl border-2 border-amber-300 bg-amber-50/50 p-8 shadow-sm">
+            <div class="text-xs font-bold text-amber-800 uppercase tracking-wide mb-2">NYC City Funding</div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">DYCD COMPASS Program</h3>
+            <div class="text-2xl font-bold text-amber-600 mb-2">$755M</div>
+            <p class="text-sm text-gray-600">NYC's "After-School for All" initiative funds K–8 after-school STEM programs. AlgebraAI is fully eligible as a COMPASS program partner.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-blue-200 bg-white p-8 shadow-sm">
+            <div class="text-xs font-bold text-blue-800 uppercase tracking-wide mb-2">Federal Funding</div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Title I &amp; Title IV-A</h3>
+            <div class="text-2xl font-bold text-gray-800 mb-2">$38.7M+</div>
+            <p class="text-sm text-gray-600">Federal Title I funds for low-income schools and Title IV-A Student Support grants can be used directly to fund AlgebraAI deployment.</p>
+          </div>
+          <div class="rounded-2xl border-2 border-green-200 bg-white p-8 shadow-sm">
+            <div class="text-xs font-bold text-green-800 uppercase tracking-wide mb-2">Private Grants</div>
+            <h3 class="text-lg font-bold text-gray-800 mb-2">Overdeck · Robin Hood · NYL</h3>
+            <div class="text-2xl font-bold text-gray-800 mb-2">$100K–$1M+</div>
+            <p class="text-sm text-gray-600">Top NYC education philanthropies actively fund evidence-based math programs for underserved students. We can help you apply.</p>
+      </div>
+    </div>
+        <div class="max-w-4xl mx-auto mt-8 rounded-2xl border-2 border-sky-200 bg-sky-50 p-6 flex gap-4 items-start">
+          <span class="text-2xl shrink-0">💡</span>
+      <div>
+            <div class="font-bold text-sky-900 mb-1">We help you navigate the funding process</div>
+            <p class="text-sm text-sky-800 leading-relaxed">Our team will connect you with grant advisors and provide all documentation needed to secure funding for your pilot — at no cost to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+    <!-- Testimonial -->
+    <section class="container mx-auto px-4 py-16">
+      <div class="max-w-3xl mx-auto text-center rounded-2xl border-2 border-gray-200 bg-white p-10 shadow-lg">
+        <span class="text-5xl text-[#1ba5ba] font-serif leading-none block mb-4">"</span>
+        <p class="text-xl sm:text-2xl text-gray-800 font-medium italic leading-relaxed mb-6">
+          The moment we showed principals the live dashboard — seeing each student's learning strategy and progress in real time — they understood immediately. This isn't just another app. It's infrastructure for algebra equity.
+        </p>
+        <div class="text-sm text-gray-600">
+          <strong class="block text-gray-800 font-semibold mb-1">Dr. Maria Chen, Curriculum Director</strong>
+      NYC Community School District — Pilot School Partner
+    </div>
+  </div>
+</section>
+
+    <!-- Pilot CTA -->
+    <section id="pilot" class="container mx-auto px-4 pb-20">
+      <div class="max-w-xl mx-auto text-center mb-10">
+        <h2 class="text-3xl sm:text-4xl font-bold text-gray-800 mb-4">Ready to bring algebra equity to your school?</h2>
+        <p class="text-lg text-gray-600">Join the NYC pilot — free for the first semester, fully supported, zero risk to your budget.</p>
+      </div>
+      <div class="max-w-lg mx-auto rounded-2xl border-2 border-gray-200 bg-white p-8 shadow-xl">
+        <h3 class="text-lg font-bold text-gray-800 mb-6 text-center">Request Your Free School Pilot</h3>
+        <form class="space-y-4 text-left" onsubmit="event.preventDefault(); alert('This is a static preview. Use the main site form to submit.');">
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">First Name</label>
+              <input type="text" placeholder="Maria" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none transition-shadow">
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Last Name</label>
+              <input type="text" placeholder="Rodriguez" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none transition-shadow">
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">School Name</label>
+            <input type="text" placeholder="PS 142 Amalia Castro" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none transition-shadow">
+    </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">Your Role</label>
+            <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none bg-white">
+        <option>Principal</option>
+        <option>Assistant Principal</option>
+        <option>Curriculum Director</option>
+        <option>Superintendent</option>
+        <option>Math Department Head</option>
+      </select>
+    </div>
+          <div class="grid sm:grid-cols-2 gap-4">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Borough</label>
+              <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none bg-white">
+          <option>Manhattan</option>
+          <option>Brooklyn</option>
+          <option>Queens</option>
+          <option>Bronx</option>
+          <option>Staten Island</option>
+        </select>
+      </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-1">Grades Served</label>
+              <select class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none bg-white">
+          <option>K–5</option>
+          <option>K–8</option>
+          <option>6–8</option>
+          <option>9–12</option>
+          <option>K–12</option>
+        </select>
+      </div>
+    </div>
+          <div>
+            <label class="block text-sm font-medium text-gray-700 mb-1">School Email</label>
+            <input type="email" placeholder="principal@schools.nyc.gov" class="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#7deaff] focus:border-transparent outline-none transition-shadow">
+          </div>
+          <button type="submit" class="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg font-semibold py-4 rounded-lg transition-colors">Request My Free Pilot →</button>
+          <p class="text-xs text-gray-500 text-center">No credit card · FERPA &amp; COPPA compliant · Response within 24 hours</p>
+        </form>
+      </div>
+    </section>
+  </div>
+
+  <!-- Footer (matches app/page.tsx) -->
+  <footer class="bg-gray-900 text-white py-8">
+    <div class="container mx-auto px-4">
+      <div class="flex flex-col items-center space-y-6">
+        <div class="flex flex-col lg:flex-row items-center justify-between w-full space-y-4 lg:space-y-0">
+          <div class="flex flex-wrap justify-center gap-4 sm:space-x-6 text-sm">
+            <a href="https://ia.intelladapt.ai/terms-of-use" class="text-gray-300 hover:text-white transition-colors">Terms of Use</a>
+            <a href="https://ia.intelladapt.ai/privacy-policy" class="text-gray-300 hover:text-white transition-colors">Privacy Policy</a>
+            <a href="https://algebraai.intelladapt.ai" class="text-gray-300 hover:text-white transition-colors">algebraai.intelladapt.ai</a>
+          </div>
+          <a href="https://ia.intelladapt.ai/" class="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors">
+            <span>Powered by</span>
+            <img src="public/IA Logo.png" alt="IA Logo" class="h-6 w-auto" />
+            <span>IntellAdapt</span>
+          </a>
+        </div>
+        <div class="flex space-x-4">
+          <a href="https://www.facebook.com/profile.php?id=61579068315080" class="text-gray-400 hover:text-white transition-colors" aria-label="Facebook">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
+          </a>
+          <a href="https://www.instagram.com/intelladapt/" class="text-gray-400 hover:text-white transition-colors" aria-label="Instagram">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+          </a>
+          <a href="https://www.linkedin.com/company/intelladapt/" class="text-gray-400 hover:text-white transition-colors" aria-label="LinkedIn">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+          </a>
+          <a href="https://x.com/intelladapt" class="text-gray-400 hover:text-white transition-colors" aria-label="X">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+          </a>
+          <a href="https://www.youtube.com/@intellADAPTBoston" class="text-gray-400 hover:text-white transition-colors" aria-label="YouTube">
+            <svg class="w-6 h-6" fill="currentColor" viewBox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          </a>
+        </div>
+        <div class="text-sm text-gray-300 text-center">
+          © 2026 Algebra AI by Intelladapt. All rights reserved. FERPA &amp; COPPA Compliant. FDA-approved EEG Technology.
+        </div>
+      </div>
+    </div>
+</footer>
+
+  <script>
+    (function () {
+      var header = document.getElementById('site-header');
+      function onScroll() {
+        if (window.scrollY > 10) {
+          header.classList.add('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-200');
+          header.classList.remove('bg-transparent');
+        } else {
+          header.classList.remove('bg-white/95', 'backdrop-blur-md', 'shadow-lg', 'border-b', 'border-gray-200');
+          header.classList.add('bg-transparent');
+        }
+      }
+      window.addEventListener('scroll', onScroll, { passive: true });
+      onScroll();
+
+      var btn = document.getElementById('menu-btn');
+      var nav = document.getElementById('mobile-nav');
+      if (btn && nav) {
+        btn.addEventListener('click', function () {
+          var open = nav.classList.toggle('hidden') === false;
+          btn.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+      }
+
+      document.querySelectorAll('a[href^="#"]').forEach(function (a) {
+        a.addEventListener('click', function (e) {
+          var id = this.getAttribute('href').slice(1);
+          var el = document.getElementById(id);
+          if (el) {
+            e.preventDefault();
+            el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+            if (nav && !nav.classList.contains('hidden')) {
+              nav.classList.add('hidden');
+              if (btn) btn.setAttribute('aria-expanded', 'false');
+            }
+          }
+        });
+      });
+    })();
+  </script>
+</body>
+</html>

@@ -1,0 +1,438 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AlgebraAI for NYC Schools</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  :root {
+    --navy: #0B1F3A;
+    --navy-mid: #1A3456;
+    --blue: #1B5FA8;
+    --blue-light: #2E82D6;
+    --gold: #E8A020;
+    --gold-light: #F5C842;
+    --cream: #F9F6F0;
+    --white: #FFFFFF;
+    --gray: #6B7280;
+    --light-gray: #F3F4F6;
+    --border: #E5E7EB;
+    --text: #111827;
+    --text-mid: #374151;
+  }
+  body { font-family: 'DM Sans', sans-serif; color: var(--text); background: var(--white); line-height: 1.6; }
+
+  /* NAV */
+  nav { background: var(--navy); padding: 16px 40px; display: flex; align-items: center; justify-content: space-between; position: sticky; top: 0; z-index: 100; }
+  .nav-logo { color: var(--white); font-family: 'DM Serif Display', serif; font-size: 22px; letter-spacing: -0.3px; }
+  .nav-logo span { color: var(--gold); }
+  .nav-links { display: flex; gap: 32px; }
+  .nav-links a { color: rgba(255,255,255,0.75); text-decoration: none; font-size: 14px; font-weight: 400; transition: color 0.2s; }
+  .nav-links a:hover { color: var(--white); }
+  .nav-cta { background: var(--gold); color: var(--navy); padding: 10px 22px; border-radius: 6px; font-weight: 600; font-size: 14px; text-decoration: none; transition: background 0.2s; }
+  .nav-cta:hover { background: var(--gold-light); }
+
+  /* HERO */
+  .hero { background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 60%, #1B3F6E 100%); padding: 90px 40px 80px; position: relative; overflow: hidden; }
+  .hero::before { content: ''; position: absolute; top: -80px; right: -80px; width: 500px; height: 500px; background: radial-gradient(circle, rgba(232,160,32,0.12) 0%, transparent 70%); pointer-events: none; }
+  .hero-inner { max-width: 1100px; margin: 0 auto; display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center; }
+  .hero-badge { display: inline-flex; align-items: center; gap: 8px; background: rgba(232,160,32,0.15); border: 1px solid rgba(232,160,32,0.4); border-radius: 100px; padding: 6px 16px; margin-bottom: 24px; }
+  .hero-badge span { color: var(--gold); font-size: 13px; font-weight: 500; letter-spacing: 0.5px; text-transform: uppercase; }
+  .hero h1 { font-family: 'DM Serif Display', serif; font-size: 48px; line-height: 1.15; color: var(--white); margin-bottom: 20px; }
+  .hero h1 em { color: var(--gold); font-style: italic; }
+  .hero p { color: rgba(255,255,255,0.75); font-size: 17px; line-height: 1.7; margin-bottom: 36px; max-width: 480px; }
+  .hero-btns { display: flex; gap: 14px; flex-wrap: wrap; }
+  .btn-primary { background: var(--gold); color: var(--navy); padding: 14px 28px; border-radius: 8px; font-weight: 600; font-size: 15px; text-decoration: none; display: inline-block; transition: all 0.2s; }
+  .btn-primary:hover { background: var(--gold-light); transform: translateY(-1px); }
+  .btn-secondary { background: transparent; color: var(--white); padding: 14px 28px; border-radius: 8px; font-weight: 500; font-size: 15px; text-decoration: none; display: inline-block; border: 1.5px solid rgba(255,255,255,0.35); transition: all 0.2s; }
+  .btn-secondary:hover { border-color: var(--white); background: rgba(255,255,255,0.06); }
+  .hero-card { background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.12); border-radius: 16px; padding: 32px; backdrop-filter: blur(10px); }
+  .hero-stat { text-align: center; padding: 16px 0; border-bottom: 1px solid rgba(255,255,255,0.08); }
+  .hero-stat:last-child { border-bottom: none; padding-bottom: 0; }
+  .hero-stat:first-child { padding-top: 0; }
+  .stat-num { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--gold); line-height: 1; }
+  .stat-label { color: rgba(255,255,255,0.65); font-size: 13px; margin-top: 4px; }
+
+  /* SOCIAL PROOF BAR */
+  .proof-bar { background: var(--cream); border-bottom: 1px solid var(--border); padding: 20px 40px; text-align: center; }
+  .proof-bar p { color: var(--gray); font-size: 14px; }
+  .proof-bar strong { color: var(--navy); }
+
+  /* SECTION */
+  section { padding: 80px 40px; }
+  .section-inner { max-width: 1100px; margin: 0 auto; }
+  .section-label { font-size: 12px; font-weight: 600; letter-spacing: 1.5px; text-transform: uppercase; color: var(--blue); margin-bottom: 12px; }
+  .section-title { font-family: 'DM Serif Display', serif; font-size: 36px; color: var(--navy); line-height: 1.25; margin-bottom: 16px; }
+  .section-sub { color: var(--gray); font-size: 17px; max-width: 600px; line-height: 1.7; }
+
+  /* PROBLEM */
+  .problem { background: var(--navy); }
+  .problem .section-title { color: var(--white); }
+  .problem .section-sub { color: rgba(255,255,255,0.65); }
+  .problem .section-label { color: var(--gold); }
+  .problem-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .problem-card { background: rgba(255,255,255,0.05); border: 1px solid rgba(255,255,255,0.1); border-radius: 12px; padding: 28px; }
+  .problem-icon { font-size: 28px; margin-bottom: 16px; }
+  .problem-card h3 { color: var(--white); font-size: 17px; font-weight: 600; margin-bottom: 10px; }
+  .problem-card p { color: rgba(255,255,255,0.6); font-size: 14px; line-height: 1.65; }
+
+  /* SOLUTION */
+  .solution { background: var(--white); }
+  .solution-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 48px; margin-top: 48px; align-items: start; }
+  .feature-item { display: flex; gap: 18px; margin-bottom: 32px; }
+  .feature-icon { width: 44px; height: 44px; background: #EBF3FF; border-radius: 10px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 20px; }
+  .feature-item h3 { font-size: 16px; font-weight: 600; color: var(--navy); margin-bottom: 6px; }
+  .feature-item p { color: var(--gray); font-size: 14px; line-height: 1.6; }
+  .demo-box { background: var(--light-gray); border-radius: 16px; padding: 32px; border: 1px solid var(--border); }
+  .demo-header { display: flex; align-items: center; gap: 10px; margin-bottom: 20px; }
+  .demo-dot { width: 10px; height: 10px; border-radius: 50%; }
+  .student-row { background: var(--white); border-radius: 8px; padding: 14px 16px; margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between; border: 1px solid var(--border); }
+  .student-name { font-size: 14px; font-weight: 500; color: var(--navy); }
+  .student-grade { font-size: 12px; color: var(--gray); }
+  .progress-wrap { display: flex; align-items: center; gap: 10px; }
+  .progress-bar { height: 6px; background: var(--light-gray); border-radius: 3px; width: 80px; overflow: hidden; }
+  .progress-fill { height: 100%; border-radius: 3px; }
+  .tag { font-size: 11px; font-weight: 600; padding: 3px 9px; border-radius: 100px; }
+  .tag-green { background: #D1FAE5; color: #065F46; }
+  .tag-amber { background: #FEF3C7; color: #92400E; }
+  .tag-blue { background: #DBEAFE; color: #1E40AF; }
+
+  /* CURRICULUM */
+  .curriculum { background: var(--cream); }
+  .modules-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px; margin-top: 48px; }
+  .module-card { background: var(--white); border: 1px solid var(--border); border-radius: 10px; padding: 20px 18px; transition: all 0.2s; }
+  .module-card:hover { border-color: var(--blue); box-shadow: 0 4px 16px rgba(27,95,168,0.08); transform: translateY(-2px); }
+  .module-num { font-size: 11px; font-weight: 600; color: var(--blue); text-transform: uppercase; letter-spacing: 1px; margin-bottom: 8px; }
+  .module-card h4 { font-size: 14px; font-weight: 600; color: var(--navy); margin-bottom: 6px; line-height: 1.4; }
+  .module-card p { font-size: 12px; color: var(--gray); line-height: 1.5; }
+
+  /* FUNDING */
+  .funding { background: var(--white); }
+  .funding-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 48px; }
+  .funding-card { border: 1px solid var(--border); border-radius: 12px; padding: 28px; }
+  .funding-card.highlight { border-color: var(--gold); background: #FFFBF0; }
+  .funding-tag { font-size: 11px; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 12px; }
+  .funding-card h3 { font-size: 17px; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+  .funding-card p { font-size: 14px; color: var(--gray); line-height: 1.6; }
+  .funding-amount { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--navy); margin: 12px 0 4px; }
+  .funding-amount.gold { color: var(--gold); }
+
+  /* TESTIMONIAL */
+  .testimonial { background: var(--navy); }
+  .testimonial-inner { max-width: 800px; margin: 0 auto; text-align: center; }
+  .quote-mark { font-family: 'DM Serif Display', serif; font-size: 80px; color: var(--gold); line-height: 0.5; margin-bottom: 24px; display: block; }
+  .quote-text { font-family: 'DM Serif Display', serif; font-size: 26px; color: var(--white); line-height: 1.5; margin-bottom: 28px; font-style: italic; }
+  .quote-attr { color: rgba(255,255,255,0.55); font-size: 14px; }
+  .quote-attr strong { color: rgba(255,255,255,0.85); font-weight: 500; display: block; margin-bottom: 4px; }
+
+  /* CTA */
+  .cta-section { background: var(--blue); padding: 80px 40px; text-align: center; }
+  .cta-section h2 { font-family: 'DM Serif Display', serif; font-size: 40px; color: var(--white); margin-bottom: 16px; }
+  .cta-section p { color: rgba(255,255,255,0.8); font-size: 17px; max-width: 540px; margin: 0 auto 40px; }
+  .form-box { background: var(--white); border-radius: 16px; padding: 40px; max-width: 520px; margin: 0 auto; text-align: left; }
+  .form-box h3 { font-size: 18px; font-weight: 600; color: var(--navy); margin-bottom: 24px; }
+  .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .form-group { margin-bottom: 16px; }
+  .form-group label { font-size: 13px; font-weight: 500; color: var(--text-mid); margin-bottom: 6px; display: block; }
+  .form-group input, .form-group select { width: 100%; padding: 10px 14px; border: 1.5px solid var(--border); border-radius: 8px; font-size: 14px; font-family: 'DM Sans', sans-serif; color: var(--text); outline: none; transition: border-color 0.2s; }
+  .form-group input:focus, .form-group select:focus { border-color: var(--blue-light); }
+  .form-submit { width: 100%; background: var(--navy); color: var(--white); border: none; padding: 14px; border-radius: 8px; font-size: 15px; font-weight: 600; cursor: pointer; margin-top: 8px; font-family: 'DM Sans', sans-serif; transition: background 0.2s; }
+  .form-submit:hover { background: var(--navy-mid); }
+  .form-note { font-size: 12px; color: var(--gray); text-align: center; margin-top: 12px; }
+
+  /* FOOTER */
+  footer { background: var(--navy); padding: 40px; text-align: center; }
+  footer p { color: rgba(255,255,255,0.4); font-size: 13px; }
+  footer a { color: rgba(255,255,255,0.55); text-decoration: none; }
+
+  @media (max-width: 768px) {
+    .hero-inner, .solution-grid, .problem-grid, .funding-grid { grid-template-columns: 1fr; }
+    .modules-grid { grid-template-columns: 1fr 1fr; }
+    .hero h1 { font-size: 34px; }
+    .form-row { grid-template-columns: 1fr; }
+    nav { padding: 14px 20px; }
+    .nav-links { display: none; }
+    section { padding: 60px 20px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">Algebra<span>AI</span></div>
+  <div class="nav-links">
+    <a href="#solution">How It Works</a>
+    <a href="#curriculum">Curriculum</a>
+    <a href="#funding">Funding</a>
+    <a href="#pilot">Pilot Program</a>
+  </div>
+  <a href="#pilot" class="nav-cta">Request a Pilot</a>
+</nav>
+
+<!-- HERO -->
+<section class="hero" style="padding:90px 40px 80px">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-badge"><span>NYC K–12 Schools Initiative</span></div>
+      <h1>Algebra for <em>Every</em> Student in Your School</h1>
+      <p>AlgebraAI delivers AI-powered, neuroscience-backed math instruction that meets each student where they are — free for NYC public schools through available grant funding.</p>
+      <div class="hero-btns">
+        <a href="#pilot" class="btn-primary">Start a Free Pilot</a>
+        <a href="#solution" class="btn-secondary">See How It Works</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-stat">
+        <div class="stat-num">3×</div>
+        <div class="stat-label">Faster algebra mastery vs. traditional instruction</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">2</div>
+        <div class="stat-label">Average letter grade improvement per student</div>
+      </div>
+      <div class="hero-stat">
+        <div class="stat-num">184K</div>
+        <div class="stat-label">NYC students targeted for after-school expansion by 2028</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROOF BAR -->
+<div class="proof-bar">
+  <p>Aligned with <strong>NYC DOE standards</strong> · <strong>FERPA & COPPA compliant</strong> · Eligible for <strong>DYCD COMPASS</strong>, <strong>Title I</strong>, <strong>Overdeck</strong> & <strong>Robin Hood</strong> funding · <strong>FDA-approved EEG technology</strong></p>
+</div>
+
+<!-- PROBLEM -->
+<section class="problem" id="problem">
+  <div class="section-inner">
+    <div class="section-label">The Challenge</div>
+    <h2 class="section-title" style="color:white">NYC students are falling behind in algebra — and the gap is growing</h2>
+    <p class="section-sub">Only 1 in 5 NYC elementary students has access to after-school programs. For math, the opportunity gap is even wider.</p>
+    <div class="problem-grid">
+      <div class="problem-card">
+        <div class="problem-icon">📉</div>
+        <h3>Algebra is the gateway subject</h3>
+        <p>Students who don't master algebra by 9th grade are 4× less likely to graduate college-ready. NYC proficiency rates remain well below national averages in Title I schools.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">🧩</div>
+        <h3>One-size teaching doesn't work</h3>
+        <p>Every student's brain processes math differently. Traditional instruction can't adapt fast enough — students fall behind before a teacher even notices the gap.</p>
+      </div>
+      <div class="problem-card">
+        <div class="problem-icon">⏰</div>
+        <h3>Teachers are stretched thin</h3>
+        <p>NYC teachers manage 25–35 students per class. There's simply no time for the individualized support that struggling algebra students need every day.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SOLUTION -->
+<section class="solution" id="solution">
+  <div class="section-inner">
+    <div class="section-label">Our Solution</div>
+    <h2 class="section-title">AI that learns how each student's brain works — and teaches accordingly</h2>
+    <p class="section-sub">AlgebraAI combines adaptive AI with optional EEG neuroscience technology to personalize algebra instruction for every student, every session.</p>
+    <div class="solution-grid">
+      <div>
+        <div class="feature-item">
+          <div class="feature-icon">🧠</div>
+          <div>
+            <h3>Brainwave-Adaptive Learning</h3>
+            <p>Optional FDA-approved EEG headset detects when a student is focused, confused, or disengaged — and instantly adjusts the lesson. No more guessing.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">📊</div>
+          <div>
+            <h3>Real-Time Principal Dashboard</h3>
+            <p>See school-wide math proficiency trends, flag at-risk students before they fail, and generate reports aligned to NYC DOE progress metrics.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🎯</div>
+          <div>
+            <h3>Learning Strategy Identification</h3>
+            <p>AlgebraAI identifies whether each student is an Apprentice, Inductive, Deductive, or Discovery learner — then teaches them in their natural cognitive style.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="feature-icon">🏆</div>
+          <div>
+            <h3>Gamified Engagement</h3>
+            <p>Students earn badges, compete with classmates, and build confidence through mastery-based progression — reducing math anxiety and absenteeism.</p>
+          </div>
+        </div>
+      </div>
+      <div>
+        <div class="demo-box">
+          <div class="demo-header">
+            <div class="demo-dot" style="background:#EF4444"></div>
+            <div class="demo-dot" style="background:#F59E0B"></div>
+            <div class="demo-dot" style="background:#10B981"></div>
+            <span style="font-size:13px;color:#6B7280;margin-left:8px;font-weight:500">Principal Dashboard — Live View</span>
+          </div>
+          <div style="margin-bottom:16px">
+            <div style="font-size:13px;font-weight:600;color:#374151;margin-bottom:8px">Class 7A · Module 3: Linear Equations</div>
+            <div style="display:flex;gap:12px">
+              <div style="flex:1;background:#F0FDF4;border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:700;color:#16A34A">78%</div>
+                <div style="font-size:11px;color:#4B7C5F">On Track</div>
+              </div>
+              <div style="flex:1;background:#FFFBEB;border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:700;color:#D97706">15%</div>
+                <div style="font-size:11px;color:#92400E">Needs Support</div>
+              </div>
+              <div style="flex:1;background:#FEF2F2;border-radius:8px;padding:12px;text-align:center">
+                <div style="font-size:22px;font-weight:700;color:#DC2626">7%</div>
+                <div style="font-size:11px;color:#991B1B">At Risk</div>
+              </div>
+            </div>
+          </div>
+          <div class="student-row">
+            <div><div class="student-name">Marcus J.</div><div class="student-grade">7th Grade · Deductive Learner</div></div>
+            <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:82%;background:#10B981"></div></div><span class="tag tag-green">On Track</span></div>
+          </div>
+          <div class="student-row">
+            <div><div class="student-name">Sofia R.</div><div class="student-grade">7th Grade · Apprentice Learner</div></div>
+            <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:54%;background:#F59E0B"></div></div><span class="tag tag-amber">Monitor</span></div>
+          </div>
+          <div class="student-row">
+            <div><div class="student-name">Aiden T.</div><div class="student-grade">7th Grade · Discovery Learner</div></div>
+            <div class="progress-wrap"><div class="progress-bar"><div class="progress-fill" style="width:91%;background:#3B82F6"></div></div><span class="tag tag-blue">Excelling</span></div>
+          </div>
+          <div style="margin-top:16px;padding-top:14px;border-top:1px solid #E5E7EB;font-size:13px;color:#6B7280">
+            AI Recommendation: <strong style="color:#1A3456">Sofia needs visual step-by-step support on negative coefficient problems. Assigned adaptive module tonight.</strong>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CURRICULUM -->
+<section class="curriculum" id="curriculum">
+  <div class="section-inner">
+    <div class="section-label">Curriculum</div>
+    <h2 class="section-title">12 adaptive modules · NYC State Standards aligned</h2>
+    <p class="section-sub">From pre-algebra foundations through advanced topics — every module personalizes in real time to each student's pace and learning strategy.</p>
+    <div class="modules-grid">
+      <div class="module-card"><div class="module-num">Module 1</div><h4>Foundations for Algebra</h4><p>Number sense, variables & expressions, order of operations</p></div>
+      <div class="module-card"><div class="module-num">Module 2</div><h4>Equations & Inequalities</h4><p>One & two-step equations, solving & graphing inequalities</p></div>
+      <div class="module-card"><div class="module-num">Module 3</div><h4>Linear Equations</h4><p>Slope, intercepts, graphing lines, rate of change</p></div>
+      <div class="module-card"><div class="module-num">Module 4</div><h4>Systems of Equations</h4><p>Substitution, elimination, real-world applications</p></div>
+      <div class="module-card"><div class="module-num">Module 5</div><h4>Functions & Relations</h4><p>Domain, range, function notation, patterns</p></div>
+      <div class="module-card"><div class="module-num">Module 6</div><h4>Exponents & Polynomials</h4><p>Laws of exponents, polynomial operations</p></div>
+      <div class="module-card"><div class="module-num">Module 7</div><h4>Factoring</h4><p>GCF, trinomials, difference of squares</p></div>
+      <div class="module-card"><div class="module-num">Module 8</div><h4>Quadratic Functions</h4><p>Parabolas, vertex form, quadratic formula</p></div>
+    </div>
+    <div style="text-align:center;margin-top:32px"><a href="#pilot" class="btn-primary" style="display:inline-block">See Full Curriculum + Request Pilot</a></div>
+  </div>
+</section>
+
+<!-- FUNDING -->
+<section class="funding" id="funding">
+  <div class="section-inner">
+    <div class="section-label">Funding Options</div>
+    <h2 class="section-title">Free for your school. Covered by existing funding.</h2>
+    <p class="section-sub">NYC schools can access AlgebraAI at no cost through multiple funding streams already available to your district.</p>
+    <div class="funding-grid">
+      <div class="funding-card highlight">
+        <div class="funding-tag" style="color:#B45309">NYC City Funding</div>
+        <h3>DYCD COMPASS Program</h3>
+        <div class="funding-amount gold">$755M</div>
+        <p>NYC's "After-School for All" initiative funds K–8 after-school STEM programs. AlgebraAI is fully eligible as a COMPASS program partner.</p>
+      </div>
+      <div class="funding-card">
+        <div class="funding-tag" style="color:#1E40AF">Federal Funding</div>
+        <h3>Title I & Title IV-A</h3>
+        <div class="funding-amount">$38.7M+</div>
+        <p>Federal Title I funds for low-income schools and Title IV-A Student Support grants can be used directly to fund AlgebraAI deployment.</p>
+      </div>
+      <div class="funding-card">
+        <div class="funding-tag" style="color:#065F46">Private Grants</div>
+        <h3>Overdeck · Robin Hood · NYL</h3>
+        <div class="funding-amount">$100K–$1M+</div>
+        <p>Top NYC education philanthropies actively fund evidence-based math programs for underserved students. We can help you apply.</p>
+      </div>
+    </div>
+    <div style="background:#F0F9FF;border:1px solid #BAE6FD;border-radius:12px;padding:24px 28px;margin-top:32px;display:flex;align-items:center;gap:20px">
+      <div style="font-size:28px">💡</div>
+      <div>
+        <div style="font-weight:600;color:#0C4A6E;font-size:15px;margin-bottom:4px">We help you navigate the funding process</div>
+        <p style="font-size:14px;color:#0369A1;line-height:1.6">Our team will connect you with grant advisors and provide all documentation needed to secure funding for your pilot — at no cost to you.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIAL -->
+<section class="testimonial" style="padding:80px 40px">
+  <div class="testimonial-inner">
+    <span class="quote-mark">"</span>
+    <p class="quote-text">The moment we showed principals the live dashboard — seeing each student's learning strategy and progress in real time — they understood immediately. This isn't just another app. It's infrastructure for algebra equity.</p>
+    <div class="quote-attr">
+      <strong>Dr. Maria Chen, Curriculum Director</strong>
+      NYC Community School District — Pilot School Partner
+    </div>
+  </div>
+</section>
+
+<!-- PILOT CTA -->
+<section class="cta-section" id="pilot" style="padding:80px 40px">
+  <h2>Ready to bring algebra equity to your school?</h2>
+  <p>Join the NYC pilot — free for the first semester, fully supported, zero risk to your budget.</p>
+  <div class="form-box">
+    <h3>Request Your Free School Pilot</h3>
+    <div class="form-row">
+      <div class="form-group"><label>First Name</label><input type="text" placeholder="Maria"></div>
+      <div class="form-group"><label>Last Name</label><input type="text" placeholder="Rodriguez"></div>
+    </div>
+    <div class="form-group"><label>School Name</label><input type="text" placeholder="PS 142 Amalia Castro"></div>
+    <div class="form-group"><label>Your Role</label>
+      <select>
+        <option>Principal</option>
+        <option>Assistant Principal</option>
+        <option>Curriculum Director</option>
+        <option>Superintendent</option>
+        <option>Math Department Head</option>
+      </select>
+    </div>
+    <div class="form-row">
+      <div class="form-group"><label>Borough</label>
+        <select>
+          <option>Manhattan</option>
+          <option>Brooklyn</option>
+          <option>Queens</option>
+          <option>Bronx</option>
+          <option>Staten Island</option>
+        </select>
+      </div>
+      <div class="form-group"><label>Grades Served</label>
+        <select>
+          <option>K–5</option>
+          <option>K–8</option>
+          <option>6–8</option>
+          <option>9–12</option>
+          <option>K–12</option>
+        </select>
+      </div>
+    </div>
+    <div class="form-group"><label>School Email</label><input type="email" placeholder="principal@schools.nyc.gov"></div>
+    <button class="form-submit">Request My Free Pilot →</button>
+    <p class="form-note">No credit card · FERPA & COPPA compliant · Response within 24 hours</p>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>AlgebraAI by IntellAdapt · <a href="https://algebraai.intelladapt.ai">algebraai.intelladapt.ai</a> · <a href="https://ia.intelladapt.ai/privacy-policy">Privacy Policy</a> · <a href="https://ia.intelladapt.ai/terms-of-use">Terms of Use</a><br><br>© 2026 IntellAdapt. FERPA & COPPA Compliant. FDA-approved EEG Technology.</p>
+</footer>
+
+</body>
+</html>
