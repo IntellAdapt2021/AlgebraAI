@@ -475,7 +475,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">📐</span>
                     </div>
                     <h4 className="font-bold text-orange-600 mb-2">Deductive</h4>
-                    <div className="text-gray-600 text-sm">Applying general principles to specific problems</div>
+                    <div className="text-gray-600 text-sm">Learn by doing - Applying general principles to specific problems </div>
                   </div>
 
                   <div className="text-center">
