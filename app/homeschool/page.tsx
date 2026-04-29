@@ -130,7 +130,7 @@ export default function HomeschoolLanding() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/IA Logo.png" alt="IA Logo" className="h-12 w-auto" />
+              <img src="/IA Logo Full.png" alt="IA Logo" className="h-12 w-auto" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-gray-800">AlgebraAI</span>
                 <span className="text-sm text-gray-600 font-medium">Perfect for Homeschooling</span>
@@ -205,7 +205,7 @@ export default function HomeschoolLanding() {
       {/* Add padding to account for fixed header */}
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-16 text-center">
+        <section className="container mx-auto px-4 pt-12 pb-4 md:pt-14 md:pb-6 text-center">
           <div className="max-w-4xl mx-auto">
             <div className="mb-8">
               <Badge className="bg-gradient-to-r from-[#7deaff] to-[#1ba5ba] text-black px-6 py-2 text-lg mb-6">
@@ -223,7 +223,7 @@ export default function HomeschoolLanding() {
               technology that personalizes algebra education for your homeschool student, making complex concepts easier to
               understand and master.
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-0">
               <Button
                 onClick={scrollToCTA}
                 size="lg"
@@ -241,6 +241,7 @@ export default function HomeschoolLanding() {
                 <GraduationCap className="w-5 h-5 mr-2" />
                 Get Homeschool Plan
               </Button>
+              {/* Homework Solution CTA — disabled
               <Button
                 onClick={() => window.open('/homework-solution', '_blank')}
                 size="lg"
@@ -250,13 +251,14 @@ export default function HomeschoolLanding() {
                 <BookOpen className="w-5 h-5 mr-2" />
                 Homework Solution
               </Button>
+              */}
             </div>
             
           </div>
         </section>
 
         {/* Why Homeschool Section */}
-        <section id="why-homeschool" className="bg-[#7deaff]/5 py-16">
+        <section id="why-homeschool" className="bg-[#7deaff]/5 pt-12 pb-8 md:pt-16 md:pb-10">
           <div className="container mx-auto px-4">
             <div className="text-center mb-12">
               <h2 className="text-4xl font-bold mb-4 text-gray-800">Why Choose AlgebraAI for Homeschooling?</h2>
@@ -423,7 +425,7 @@ export default function HomeschoolLanding() {
         </section>
 
         {/* Technology Section - Same as original */}
-        <section id="technology" className="container mx-auto px-4 py-16">
+        <section id="technology" className="container mx-auto px-4 pt-4 pb-12 md:pt-6 md:pb-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-800">Revolutionary AI Technology Backed by Science</h2>
             <div className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -1391,7 +1393,7 @@ export default function HomeschoolLanding() {
               {/* Right Side - Powered by */}
               <a href="https://ia.intelladapt.ai/" className="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors">
                 <span>Powered by</span>
-                <img src="/IA Logo.png" alt="IA Logo" className="h-6 w-auto" />
+                <img src="/IA Logo Full.png" alt="IA Logo" className="h-6 w-auto" />
                 <span>IntellAdapt</span>
               </a>
             </div>

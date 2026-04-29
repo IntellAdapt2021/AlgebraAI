@@ -139,7 +139,7 @@ export default function AlgebraAILanding() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/IA Logo.png" alt="IA Logo" className="h-12 w-auto" />
+              <img src="/IA Logo Full.png" alt="IA Logo" className="h-12 w-auto" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-gray-800">AlgebraAI</span>
                 <span className="text-sm text-gray-600 font-medium">Help Your Child Master Algebra</span>
@@ -216,7 +216,7 @@ export default function AlgebraAILanding() {
       {/* Add padding to account for fixed header */}
       <div className="pt-20">
         {/* Hero Section */}
-        <section className="container mx-auto px-4 py-16 text-center">
+        <section className="container mx-auto px-4 pt-12 pb-4 md:pt-14 md:pb-6 text-center">
           <div className="max-w-4xl mx-auto">
             <h1 className="text-5xl md:text-6xl font-bold mb-6 text-black">
               Master Algebra with
@@ -228,7 +228,7 @@ export default function AlgebraAILanding() {
               technology that personalizes algebra education for K12 students, making complex concepts easier to
               understand and master.
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
+            <div className="flex flex-col sm:flex-row gap-4 justify-center mb-0">
               <Button
                 onClick={scrollToCTA}
                 size="lg"
@@ -245,6 +245,7 @@ export default function AlgebraAILanding() {
               >
                 Get Started For Pilot
               </Button>
+              {/* Homework Solution CTA — disabled
               <Button
                 onClick={() => window.open('/homework-solution', '_blank')}
                 size="lg"
@@ -254,6 +255,7 @@ export default function AlgebraAILanding() {
                 <BookOpen className="w-5 h-5 mr-2" />
                 Homework Solution
               </Button>
+              */}
               <Button
                 onClick={() => window.open('/homeschool', '_blank')}
                 size="lg"
@@ -269,7 +271,7 @@ export default function AlgebraAILanding() {
         </section>
 
         {/* Technology Section */}
-        <section id="technology" className="container mx-auto px-4 py-16">
+        <section id="technology" className="container mx-auto px-4 pt-4 pb-12 md:pt-6 md:pb-16">
           <div className="text-center mb-12">
             <h2 className="text-4xl font-bold mb-4 text-gray-800">Revolutionary AI Technology Backed by Science</h2>
             <div className="text-xl text-gray-600 max-w-4xl mx-auto">
@@ -1770,10 +1772,12 @@ export default function AlgebraAILanding() {
                   <Rocket className="w-5 h-5 mr-2" />
                   Start Learning Free
                 </Button>
+                {/* Watch Demo — disabled
                 <Button size="lg" className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors">
                   <BookOpen className="w-5 h-5 mr-2" />
                   Watch Demo
                 </Button>
+                */}
               </div>
             </div>
           </div>
@@ -2113,7 +2117,7 @@ export default function AlgebraAILanding() {
               {/* Right Side - Powered by */}
               <a href="https://ia.intelladapt.ai/" className="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors">
                 <span>Powered by</span>
-                <img src="/IA Logo.png" alt="IA Logo" className="h-6 w-auto" />
+                <img src="/IA Logo Full.png" alt="IA Logo" className="h-6 w-auto" />
                 <span>IntellAdapt</span>
               </a>
             </div>

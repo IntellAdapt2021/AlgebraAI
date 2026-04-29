@@ -41,7 +41,7 @@ export default function HomeworkSolutionPage() {
         <div className="container mx-auto px-4 py-4">
           <nav className="flex items-center justify-between">
             <div className="flex items-center space-x-3">
-              <img src="/IA Logo.png" alt="IA Logo" className="h-12 w-auto" />
+              <img src="/IA Logo Full.png" alt="IA Logo" className="h-12 w-auto" />
               <div className="flex flex-col">
                 <span className="text-2xl font-bold text-gray-800">AlgebraAI</span>
                 <span className="text-sm text-gray-600 font-medium">Help Your Child Master Algebra</span>
@@ -208,7 +208,7 @@ export default function HomeworkSolutionPage() {
               </div>
               <a href="https://ia.intelladapt.ai/" className="flex items-center space-x-2 text-sm text-gray-300 hover:text-white transition-colors">
                 <span>Powered by</span>
-                <img src="/IA Logo.png" alt="IA Logo" className="h-6 w-auto" />
+                <img src="/IA Logo Full.png" alt="IA Logo" className="h-6 w-auto" />
                 <span>IntellAdapt</span>
               </a>
             </div>
