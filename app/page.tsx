@@ -7,7 +7,26 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Badge } from "@/components/ui/badge"
 import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
-import { Rocket, Users, BookOpen, Target, Menu, Home, School, Brain, CheckCircle, Puzzle } from "lucide-react"
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuItem,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu"
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "@/components/ui/collapsible"
+import {
+  Rocket,
+  Users,
+  BookOpen,
+  Target,
+  Menu,
+  Home,
+  School,
+  Brain,
+  CheckCircle,
+  Puzzle,
+  ChevronDown,
+} from "lucide-react"
 import EEGTooltip from "@/components/EEGTooltip"
 import ChatWidget from "@/components/ChatWidget"
 import { submitForm } from "./actions/submit-form"
@@ -118,13 +137,19 @@ export default function AlgebraAILanding() {
     }
   }
 
-  const navItems = [
+  const aboutNavItems = [
     { label: "Features", id: "features" },
     { label: "Why AlgebraAI?", id: "why-algebraai" },
-    { label: "Technology", id: "technology" },
     { label: "Learning Strategy", id: "learning-strategy" },
-    { label: "Pricing", id: "pricing" },
+  ]
+
+  const technologyNeuroscienceNavItems = [
+    { label: "Technology", id: "technology" },
     { label: "Neuroscience 101", id: "neuroscience-101" },
+  ]
+
+  const mainNavItems = [
+    { label: "Pricing", id: "pricing" },
     { label: "Contact", id: "contact" },
   ]
 
@@ -148,7 +173,51 @@ export default function AlgebraAILanding() {
 
             {/* Desktop Navigation */}
             <div className="hidden md:flex items-center space-x-4">
-              {navItems.map((item) => (
+              <DropdownMenu modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors cursor-pointer whitespace-nowrap min-w-fit inline-flex items-center gap-1.5"
+                  >
+                    About
+                    <ChevronDown className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="min-w-[12rem]">
+                  {aboutNavItems.map((item) => (
+                    <DropdownMenuItem
+                      key={item.id}
+                      className="cursor-pointer"
+                      onSelect={() => scrollToSection(item.id)}
+                    >
+                      {item.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              <DropdownMenu modal={false}>
+                <DropdownMenuTrigger asChild>
+                  <button
+                    type="button"
+                    className="border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors cursor-pointer whitespace-nowrap min-w-fit inline-flex items-center gap-1.5"
+                  >
+                    Technology
+                    <ChevronDown className="h-4 w-4 shrink-0 opacity-80" aria-hidden />
+                  </button>
+                </DropdownMenuTrigger>
+                <DropdownMenuContent align="start" className="min-w-[12rem]">
+                  {technologyNeuroscienceNavItems.map((item) => (
+                    <DropdownMenuItem
+                      key={item.id}
+                      className="cursor-pointer"
+                      onSelect={() => scrollToSection(item.id)}
+                    >
+                      {item.label}
+                    </DropdownMenuItem>
+                  ))}
+                </DropdownMenuContent>
+              </DropdownMenu>
+              {mainNavItems.map((item) => (
                 <button
                   key={item.id}
                   onClick={() => scrollToSection(item.id)}
@@ -185,7 +254,49 @@ export default function AlgebraAILanding() {
                       </div>
                     </div>
 
-                    {navItems.map((item) => (
+                    <Collapsible className="mx-2">
+                      <CollapsibleTrigger className="group flex w-full items-center justify-between gap-2 text-left text-lg border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit">
+                        <span>About</span>
+                        <ChevronDown
+                          className="h-4 w-4 shrink-0 opacity-80 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                          aria-hidden
+                        />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="flex flex-col gap-2 pt-2 pl-1">
+                        {aboutNavItems.map((item) => (
+                          <button
+                            key={item.id}
+                            type="button"
+                            onClick={() => scrollToSection(item.id)}
+                            className="text-left text-base border-2 border-[#7deaff]/80 text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 pl-5 transition-colors"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </CollapsibleContent>
+                    </Collapsible>
+                    <Collapsible className="mx-2">
+                      <CollapsibleTrigger className="group flex w-full items-center justify-between gap-2 text-left text-lg border-2 border-[#7deaff] text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 transition-colors whitespace-nowrap min-w-fit">
+                        <span>Technology</span>
+                        <ChevronDown
+                          className="h-4 w-4 shrink-0 opacity-80 transition-transform duration-200 group-data-[state=open]:rotate-180"
+                          aria-hidden
+                        />
+                      </CollapsibleTrigger>
+                      <CollapsibleContent className="flex flex-col gap-2 pt-2 pl-1">
+                        {technologyNeuroscienceNavItems.map((item) => (
+                          <button
+                            key={item.id}
+                            type="button"
+                            onClick={() => scrollToSection(item.id)}
+                            className="text-left text-base border-2 border-[#7deaff]/80 text-black bg-transparent hover:bg-[#7deaff] hover:text-white rounded-full px-4 py-2 pl-5 transition-colors"
+                          >
+                            {item.label}
+                          </button>
+                        ))}
+                      </CollapsibleContent>
+                    </Collapsible>
+                    {mainNavItems.map((item) => (
                       <button
                         key={item.id}
                         onClick={() => scrollToSection(item.id)}
@@ -475,7 +586,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">📐</span>
                     </div>
                     <h4 className="font-bold text-orange-600 mb-2">Deductive</h4>
-                    <div className="text-gray-600 text-sm">Learn by doing - Applying general principles to specific problems </div>
+                    <div className="text-gray-600 text-sm">Applying general principles to specific problems </div>
                   </div>
 
                   <div className="text-center">
