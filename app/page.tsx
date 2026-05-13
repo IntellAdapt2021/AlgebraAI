@@ -918,11 +918,13 @@ export default function AlgebraAILanding() {
                     <BookOpen className="w-8 h-8 text-white" />
                   </div>
                   <CardTitle className="text-2xl text-gray-600 mb-2">Free</CardTitle>
-                  <CardDescription className="text-lg mb-4">Get started with Module 1</CardDescription>
+                  {/* <CardDescription className="text-lg mb-4">Get started with Module 1</CardDescription> */}
+                  {/*
                   <div className="text-4xl font-bold text-gray-800 mb-2">
                     $0
-                    {/* <span className="text-lg text-gray-500">/forever</span> */}
+                    <span className="text-lg text-gray-500">/forever</span>
                   </div>
+                  */}
                   <div className="text-sm text-gray-500">No EEG • Module 1 only</div>
                 </CardHeader>
                 <CardContent>
@@ -949,7 +951,7 @@ export default function AlgebraAILanding() {
                     </li>
                   </ul>
                   <Button
-                    onClick={handleTryNow}
+                    onClick={scrollToCTA}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Contact Us
@@ -1964,11 +1966,8 @@ export default function AlgebraAILanding() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       >
                         <option value="">Select a plan</option>
-                        <option value="free">Free Plan</option>
-                        <option value="family-standard">Family Standard ($29/month)</option>
-                        <option value="family-premium">Family Premium with EEG ($79/month)</option>
-                        <option value="school">School/District (Custom pricing)</option>
-                        <option value="pilot">Pilot</option>
+                        <option value="Free">Free</option>
+                        <option value="Custom plan">Custom plan</option>
                       </select>
                     </div>
 

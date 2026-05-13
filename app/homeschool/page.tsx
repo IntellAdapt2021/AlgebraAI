@@ -1151,10 +1151,8 @@ export default function HomeschoolLanding() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       >
                         <option value="">Select a plan</option>
-                        <option value="homeschool-starter">Homeschool Starter (Free)</option>
-                        <option value="homeschool-family">Homeschool Family ($19/month)</option>
-                        <option value="homeschool-premium">Homeschool Premium ($49/month)</option>
-                        <option value="homeschool-co-op">Homeschool Co-op (Custom pricing)</option>
+                        <option value="Free">Free Plan</option>
+                        <option value="Custom plan">Custom Plan</option>
                       </select>
                     </div>
 
