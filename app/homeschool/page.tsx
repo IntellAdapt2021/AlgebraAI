@@ -18,7 +18,6 @@ export default function HomeschoolLanding() {
   const [isScrolled, setIsScrolled] = useState(false)
   const [formSubmitted, setFormSubmitted] = useState(false)
   const [isSubmitting, setIsSubmitting] = useState(false)
-  const [showThankYou, setShowThankYou] = useState(false)
   const [showModules, setShowModules] = useState(false)
   const [contactFormSubmitted, setContactFormSubmitted] = useState(false)
   const [isContactSubmitting, setIsContactSubmitting] = useState(false)
@@ -53,13 +52,6 @@ export default function HomeschoolLanding() {
       })
     }
     setIsOpen(false)
-  }
-
-  const handleTryNow = () => {
-    setShowThankYou(true)
-    setTimeout(() => {
-      setShowThankYou(false)
-    }, 5000) // Hide after 5 seconds
   }
 
   const handleFormSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
@@ -230,7 +222,7 @@ export default function HomeschoolLanding() {
                 className="bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white text-lg px-8 py-3 transition-colors"
               >
                 <Rocket className="w-5 h-5 mr-2" />
-                Start Homeschooling Free
+                Start Homeschooling
               </Button>
               <Button
                 onClick={scrollToCTA}
@@ -746,22 +738,6 @@ export default function HomeschoolLanding() {
               </div>
             </div>
 
-            {/* Thank You Message */}
-            {showThankYou && (
-              <div className="max-w-2xl mx-auto mb-8">
-                <div className="bg-green-50 border border-green-200 rounded-lg p-6 text-center">
-                  <div className="w-16 h-16 bg-green-100 rounded-full flex items-center justify-center mx-auto mb-4">
-                    <span className="text-3xl">✅</span>
-                  </div>
-                  <h3 className="text-xl font-bold text-green-800 mb-3">Thank you for subscribing!</h3>
-                  <div className="text-green-700 space-y-2">
-                    <p>You will receive an email regarding the access and code.</p>
-                    <p className="font-medium">Don't forget to check your spam/junk folder.</p>
-                  </div>
-                </div>
-              </div>
-            )}
-
             <div className="grid lg:grid-cols-3 gap-6 max-w-6xl mx-auto">
               {/* Homeschool Starter Plan */}
               <Card className="border-2 border-gray-200 hover:shadow-xl transition-shadow">
@@ -771,9 +747,9 @@ export default function HomeschoolLanding() {
                   </div>
                   <CardTitle className="text-2xl text-gray-600 mb-2">Homeschool Starter</CardTitle>
                   <CardDescription className="text-lg mb-4">Perfect for trying out our platform</CardDescription>
-                  <div className="text-4xl font-bold text-gray-800 mb-2">
+                  {/* <div className="text-4xl font-bold text-gray-800 mb-2">
                     $0<span className="text-lg text-gray-500">/forever</span>
-                  </div>
+                  </div> */}
                   <div className="text-sm text-gray-500">Module 1 only • No EEG</div>
                 </CardHeader>
                 <CardContent>
@@ -800,10 +776,10 @@ export default function HomeschoolLanding() {
                     </li>
                   </ul>
                   <Button
-                    onClick={handleTryNow}
+                    onClick={scrollToCTA}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
-                    Start Free
+                    Start
                   </Button>
                 </CardContent>
               </Card>
@@ -822,15 +798,15 @@ export default function HomeschoolLanding() {
                   <CardTitle className="text-2xl text-blue-600 mb-2">Homeschool Family</CardTitle>
                   <CardDescription className="text-lg mb-4">Complete curriculum for homeschooling success</CardDescription>
                   <div className="text-4xl font-bold text-gray-800 mb-2">
-                    $19<span className="text-lg text-gray-500">/month</span>
+                    $49<span className="text-lg text-gray-500">/month</span>
                   </div>
-                  <div className="text-sm text-gray-500">Per student • 20% homeschool discount</div>
+                  <div className="text-sm text-gray-500">Per student</div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
-                      <span>All 13 algebra modules</span>
+                      <span>All 12 algebra modules</span>
                     </li>
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" />
@@ -854,7 +830,7 @@ export default function HomeschoolLanding() {
                     </li>
                   </ul>
                   <Button
-                    onClick={handleTryNow}
+                    onClick={scrollToCTA}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Start Homeschooling
@@ -873,16 +849,16 @@ export default function HomeschoolLanding() {
                     Complete brain-powered learning with <EEGTooltip showLearnMore={false}>EEG</EEGTooltip>
                   </CardDescription>
                   <div className="text-4xl font-bold text-gray-800 mb-2">
-                    $49<span className="text-lg text-gray-500">/month</span>
+                    $99<span className="text-lg text-gray-500">/month</span>
                   </div>
-                  <div className="text-sm text-gray-500">Per student • 30% homeschool discount</div>
+                  <div className="text-sm text-gray-500">Per student</div>
                 </CardHeader>
                 <CardContent>
                   <ul className="space-y-3 text-gray-600 mb-6">
                     <li className="flex items-start">
                       <CheckCircle className="w-5 h-5 text-purple-500 mr-2 flex-shrink-0 mt-0.5" />
                       <span>
-                        <strong>Everything in Homeschool Family, plus:</strong>
+                        Everything in Homeschool Family, plus:
                       </span>
                     </li>
                     <li className="flex items-start">
@@ -916,7 +892,7 @@ export default function HomeschoolLanding() {
                   </div>
                   
                   <Button
-                    onClick={handleTryNow}
+                    onClick={scrollToCTA}
                     className="w-full bg-[#7deaff] hover:bg-[#1ba5ba] text-black hover:text-white transition-colors"
                   >
                     Start Premium
@@ -1151,7 +1127,7 @@ export default function HomeschoolLanding() {
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-purple-500 focus:border-transparent transition-colors"
                       >
                         <option value="">Select a plan</option>
-                        <option value="Free">Free Plan</option>
+                        {/* <option value="Free">Free Plan</option> */}
                         <option value="Custom plan">Custom Plan</option>
                       </select>
                     </div>
@@ -1208,7 +1184,8 @@ export default function HomeschoolLanding() {
                         {isSubmitting ? "Submitting..." : "Start Homeschooling Today"}
                       </Button>
                       <div className="text-sm text-gray-500 mt-4">
-                        Free plan available • No credit card required • COPPA & FERPA compliant
+                        {/* Free plan available  */}
+                        • No credit card required • COPPA & FERPA compliant
                       </div>
                     </div>
                   </form>
