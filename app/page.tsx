@@ -561,7 +561,7 @@ export default function AlgebraAILanding() {
                     </div>
                     <h4 className="font-bold text-blue-600 mb-2">Apprentice</h4>
                     <div className="text-gray-600 text-sm">
-                      Learns through guided practice and step-by-step instruction
+                    Content is presented in a systematic step-by-step procedural way so a learner can learn by following simple steps.
                     </div>
                   </div>
 
@@ -570,7 +570,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">🌱</span>
                     </div>
                     <h4 className="font-bold text-green-600 mb-2">Incidental</h4>
-                    <div className="text-gray-600 text-sm">Natural absorption through exposure and context</div>
+                    <div className="text-gray-600 text-sm">Content is presented in real-life scenarios or case studies and the "events" in the story trigger the learning experience. These events lead to incidental learning.</div>
                   </div>
 
                   <div className="text-center">
@@ -578,7 +578,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">🔍</span>
                     </div>
                     <h4 className="font-bold text-purple-600 mb-2">Inductive</h4>
-                    <div className="text-gray-600 text-sm">Pattern observation to form general rules</div>
+                    <div className="text-gray-600 text-sm">Content is presented with examples that illustrate the principle clearly to a learner. The examples enable learners to develop their own understanding of the concept.</div>
                   </div>
 
                   <div className="text-center">
@@ -586,7 +586,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">📐</span>
                     </div>
                     <h4 className="font-bold text-orange-600 mb-2">Deductive</h4>
-                    <div className="text-gray-600 text-sm">Applying general principles to specific problems </div>
+                    <div className="text-gray-600 text-sm">Content is presented with interactive animations that allow the learner to learn by doing interactive assignments that lead to the understanding of a concept.</div>
                   </div>
 
                   <div className="text-center">
@@ -594,7 +594,7 @@ export default function AlgebraAILanding() {
                       <span className="text-white font-bold">🚀</span>
                     </div>
                     <h4 className="font-bold text-indigo-600 mb-2">Discovery</h4>
-                    <div className="text-gray-600 text-sm">Independent exploration and experimentation</div>
+                    <div className="text-gray-600 text-sm">Content is presented in a simulated learning environment where a learner can interact with their virtual learning environment to conduct their own discovery of a concept.</div>
                   </div>
                 </div>
 
