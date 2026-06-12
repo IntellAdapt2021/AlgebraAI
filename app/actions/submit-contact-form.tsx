@@ -17,7 +17,7 @@ export async function submitContactForm(formData: FormData) {
 
   // Check if SendGrid is configured
   const sendGridApiKey = process.env.SENDGRID_API_KEY
-  const emailFrom = process.env.EMAIL_FROM || "bthapa@intelladapt.com"
+  const emailFrom = process.env.EMAIL_FROM || "info@intelladapt.com"
 
   if (!sendGridApiKey) {
     console.log("⚠️ SendGrid API key not configured. Contact form data logged above for manual processing.")

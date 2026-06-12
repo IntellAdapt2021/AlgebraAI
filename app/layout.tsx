@@ -1,4 +1,5 @@
 import type { Metadata } from 'next'
+import Script from 'next/script'
 import { GeistSans } from 'geist/font/sans'
 import { GeistMono } from 'geist/font/mono'
 import './globals.css'
@@ -25,7 +26,14 @@ html {
 }
         `}</style>
       </head>
-      <body>{children}</body>
+      <body>
+        {children}
+        <Script
+          defer
+          src="https://static.cloudflareinsights.com/beacon.min.js"
+          data-cf-beacon='{"token": "b06ddb25163a4388b4c39c9ece55118d"}'
+        />
+      </body>
     </html>
   )
 }
